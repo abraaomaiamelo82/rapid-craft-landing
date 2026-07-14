@@ -63,6 +63,24 @@ const stats = [
   { value: "4.9", label: "nota de avaliação" },
 ];
 
+const testimonials = [
+  {
+    name: "Tiago Alcântara",
+    meta: "4 avaliações · 3 semanas atrás",
+    text: "Muito bom! Deixou meu cabelo e o cabelo dos meus filhos excelentes e tratou meu filho menor muito bem.",
+  },
+  {
+    name: "Denise Nogueira",
+    meta: "2 avaliações · 5 meses atrás",
+    text: "Perfeita 🤩 nota infinita. Meu filho é uma criança autista, ele ficou super à vontade com o Helder, sendo que com o barbeiro antigo não parava quieto. Muito satisfeita pelo excelente trabalho.",
+  },
+  {
+    name: "Marcos Vinícius",
+    meta: "Cliente fiel · 2 meses atrás",
+    text: "Atendimento impecável, ambiente agradável e acabamento perfeito. Virei cliente fiel da Benício’s.",
+  },
+];
+
 export const Route = createFileRoute("/")({
   component: Index,
 });
