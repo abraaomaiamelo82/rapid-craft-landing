@@ -63,6 +63,24 @@ const stats = [
   { value: "4.9", label: "nota de avaliação" },
 ];
 
+const testimonials = [
+  {
+    name: "Tiago Alcântara",
+    meta: "4 avaliações · 3 semanas atrás",
+    text: "Muito bom! Deixou meu cabelo e o cabelo dos meus filhos excelentes e tratou meu filho menor muito bem.",
+  },
+  {
+    name: "Denise Nogueira",
+    meta: "2 avaliações · 5 meses atrás",
+    text: "Perfeita 🤩 nota infinita. Meu filho é uma criança autista, ele ficou super à vontade com o Helder, sendo que com o barbeiro antigo não parava quieto. Muito satisfeita pelo excelente trabalho.",
+  },
+  {
+    name: "Marcos Vinícius",
+    meta: "Cliente fiel · 2 meses atrás",
+    text: "Atendimento impecável, ambiente agradável e acabamento perfeito. Virei cliente fiel da Benício’s.",
+  },
+];
+
 export const Route = createFileRoute("/")({
   component: Index,
 });
@@ -285,7 +303,35 @@ function Index() {
         </div>
       </section>
 
+      <section id="depoimentos" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-2xl">
+            <p className="font-heading text-sm font-bold uppercase tracking-normal text-primary">Depoimentos</p>
+            <h2 className="mt-3 font-heading text-4xl font-bold uppercase tracking-normal sm:text-5xl">
+              Quem confia na Benício’s recomenda.
+            </h2>
+          </div>
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {testimonials.map((t) => (
+              <article key={t.name} className="flex flex-col rounded-md border border-border bg-card p-6">
+                <div className="flex items-center gap-1 text-primary" aria-label="Avaliação 5 estrelas">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="size-4 fill-current" aria-hidden="true" />
+                  ))}
+                </div>
+                <p className="mt-4 flex-1 leading-7 text-muted-foreground">“{t.text}”</p>
+                <div className="mt-6 border-t border-border pt-4">
+                  <strong className="block font-heading text-base font-bold uppercase tracking-normal text-foreground">{t.name}</strong>
+                  <span className="text-xs font-bold uppercase tracking-normal text-muted-foreground">{t.meta}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contato" className="border-t border-border bg-secondary/55 px-4 py-20 sm:px-6 lg:px-8">
+
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="font-heading text-sm font-bold uppercase tracking-normal text-primary">Contato</p>
