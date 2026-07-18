@@ -156,7 +156,7 @@ function Index() {
                 onClick={() => setActiveTooltip(activeTooltip === item.label ? null : item.label)}
               >
                 <div className="flex flex-col items-center gap-2">
-                  <div className="rounded-2xl bg-white/5 p-4 text-primary backdrop-blur-sm transition-colors hover:bg-primary/20">
+                  <div className="rounded-2xl bg-white/5 p-4 text-primary backdrop-blur-sm transition-all duration-300 group-hover/amenity:bg-primary/20 group-hover/amenity:shadow-[0_0_20px_rgba(184,146,64,0.3)]">
                     <item.icon size={28} />
                   </div>
                   <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
