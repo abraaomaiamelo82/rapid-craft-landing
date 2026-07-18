@@ -77,25 +77,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Benício’s Barber Shop | Barbearia em Itaitinga" },
+      { title: "Sales Barbearia Ancuri | Estilo e Tradição" },
       {
         name: "description",
         content:
-          "Cortes, barba e tratamento capilar premium na Benício’s Barber Shop em Itaitinga-CE. Agende pelo WhatsApp.",
+          "Sales Barbearia Ancuri - Uma nova experiência para uma antiga tradição. Cortes, barba e tratamentos exclusivos em Itaitinga/CE.",
       },
-      { name: "author", content: "Benício’s Barber Shop" },
-      { property: "og:title", content: "Benício’s Barber Shop | Barbearia em Itaitinga" },
+      { name: "author", content: "Sales Barbearia Ancuri" },
+      { property: "og:title", content: "Sales Barbearia Ancuri | Barbearia Premium" },
       {
         property: "og:description",
         content:
-          "Onde o corte vira arte. Barbearia premium com corte, barba, tratamento capilar e agendamento online em Itaitinga-CE.",
+          "Uma nova experiência para uma antiga tradição. Agende seu horário na melhor barbearia do Ancuri.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Benício’s Barber Shop" },
+      { name: "twitter:title", content: "Sales Barbearia Ancuri" },
       {
         name: "twitter:description",
-        content: "Barbearia premium em Itaitinga-CE. Agende seu horário pelo WhatsApp.",
+        content: "Barbearia premium em Itaitinga-CE. Agende seu horário.",
       },
     ],
     links: [
@@ -114,7 +114,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Roboto:wght@400;500;700;900&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
