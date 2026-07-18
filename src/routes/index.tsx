@@ -99,7 +99,7 @@ function Index() {
               target="_blank" 
               className="rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-transform hover:scale-105"
             >
-              Agendar agora ({formattedPhone})
+              Agendar agora
             </a>
           </div>
         </div>
@@ -127,7 +127,7 @@ function Index() {
               className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-10 py-5 text-lg font-bold text-primary-foreground shadow-2xl shadow-primary/40 transition-all hover:scale-105 sm:w-auto"
             >
               <CalendarDays size={24} />
-              Agendar agora ({formattedPhone})
+              Agendar agora
             </a>
             <div className="flex items-center gap-8 border-l border-white/10 pl-8 hidden md:flex">
               <div>
@@ -209,7 +209,7 @@ function Index() {
                   target="_blank" 
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 py-3 text-sm font-bold text-white transition-all hover:bg-primary hover:text-primary-foreground"
                 >
-                  Agendar este serviço ({formattedPhone})
+                  Agendar este serviço
                 </a>
               </div>
             ))}
