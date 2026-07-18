@@ -120,7 +120,7 @@ function Index() {
           <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground md:text-xl animate-reveal-up [animation-delay:200ms] text-balance">
             Excelência no atendimento, precisão no corte e o estilo que você merece em um ambiente exclusivo e sofisticado.
           </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row animate-reveal-up [animation-delay:400ms]">
             <a 
               href={whatsappUrl} 
               target="_blank" 
