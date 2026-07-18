@@ -19,6 +19,9 @@ import {
 import { useState } from "react";
 import heroImage from "@/assets/hero-sales.jpeg.asset.json";
 import logoImage from "@/assets/sales-logo.jpeg.asset.json";
+import avatarTiago from "@/assets/avatar-tiago.jpg";
+import avatarDenise from "@/assets/avatar-denise.jpg";
+import avatarMarcos from "@/assets/avatar-marcos.jpg";
 
 const phone = "5585988016749";
 const formattedPhone = "+55 85 98801‑6749";
@@ -38,9 +41,9 @@ const services = [
 ];
 
 const testimonials = [
-  { name: "Tiago Alcântara", rating: 5, text: "Muito bom! Deixou meu cabelo e o cabelo dos meus filhos excelentes.", date: "3 semanas atrás" },
-  { name: "Denise Nogueira", rating: 5, text: "Perfeita 🤩 nota infinita… ambiente acolhedor e profissionalismo.", date: "5 meses atrás" },
-  { name: "Marcos Oliveira", rating: 5, text: "Excelente atendimento e técnica impecável. Recomendo fortemente.", date: "1 mês atrás" },
+  { name: "Tiago Alcântara", rating: 5, text: "Muito bom! Deixou meu cabelo e o cabelo dos meus filhos excelentes. Atendimento nota 10, ambiente limpo e voltarei sempre.", date: "3 semanas atrás", avatar: avatarTiago, role: "Cliente frequente" },
+  { name: "Denise Nogueira", rating: 5, text: "Perfeita 🤩 nota infinita… ambiente acolhedor e profissionalismo em cada detalhe. Levo meu filho e ele adora!", date: "5 meses atrás", avatar: avatarDenise, role: "Cliente há 2 anos" },
+  { name: "Marcos Oliveira", rating: 5, text: "Excelente atendimento e técnica impecável. O degradê ficou perfeito e a barba impecável. Recomendo fortemente.", date: "1 mês atrás", avatar: avatarMarcos, role: "Cliente novo" },
 ];
 
 export const Route = createFileRoute("/")({
