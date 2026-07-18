@@ -178,14 +178,19 @@ function Index() {
       <section id="servicos" className="py-24">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-16 flex flex-col items-center text-center">
-            <img
-              src={logoImage.url}
-              alt="Sales Barbearia Ancuri"
-              className="mb-8 w-full max-w-md rounded-2xl border border-primary/20 shadow-2xl shadow-primary/10"
-            />
-            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossos <span className="text-primary">Serviços</span></h2>
+            <div className="mb-8 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/20 via-primary/5 to-transparent p-1 shadow-2xl shadow-primary/20 ring-1 ring-primary/30">
+              <img
+                src={logoImage.url}
+                alt="Sales Barbearia Ancuri"
+                className="size-32 rounded-full object-cover md:size-40"
+              />
+            </div>
+            <span className="mb-3 inline-block rounded-full bg-primary/10 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary">
+              Nossa Casa
+            </span>
+            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossos <span className="italic text-primary">Serviços</span></h2>
             <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-primary" />
-            <p className="mt-6 text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
+            <p className="mt-6 max-w-md text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
