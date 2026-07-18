@@ -114,7 +114,7 @@ function Index() {
           <span className="mb-4 inline-block rounded-full bg-primary/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
             A melhor experiência de Itaitinga
           </span>
-          <h2 className="mb-6 font-heading text-5xl font-extrabold leading-tight text-white md:text-7xl">
+          <h2 className="mb-6 font-heading text-5xl font-extrabold leading-tight text-white md:text-7xl animate-reveal-up">
             Uma nova experiência para uma <span className="italic text-primary">antiga tradição</span>.
           </h2>
           <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground md:text-xl">
