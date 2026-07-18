@@ -21,6 +21,7 @@ import heroImage from "@/assets/hero-sales.jpeg.asset.json";
 import logoImage from "@/assets/sales-logo.jpeg.asset.json";
 
 const phone = "5585988016749";
+const formattedPhone = "+55 85 98801‑6749";
 const whatsappText = encodeURIComponent("Olá! Gostaria de agendar um horário na Sales Barbearia Ancuri.");
 const whatsappUrl = `https://wa.me/${phone}?text=${whatsappText}`;
 
@@ -98,7 +99,7 @@ function Index() {
               target="_blank" 
               className="rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-transform hover:scale-105"
             >
-              Agendar agora
+              Agendar agora ({formattedPhone})
             </a>
           </div>
         </div>
@@ -126,7 +127,7 @@ function Index() {
               className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-10 py-5 text-lg font-bold text-primary-foreground shadow-2xl shadow-primary/40 transition-all hover:scale-105 sm:w-auto"
             >
               <CalendarDays size={24} />
-              Agendar agora
+              Agendar agora ({formattedPhone})
             </a>
             <div className="flex items-center gap-8 border-l border-white/10 pl-8 hidden md:flex">
               <div>
@@ -208,7 +209,7 @@ function Index() {
                   target="_blank" 
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 py-3 text-sm font-bold text-white transition-all hover:bg-primary hover:text-primary-foreground"
                 >
-                  Agendar este serviço
+                  Agendar este serviço ({formattedPhone})
                 </a>
               </div>
             ))}
