@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import heroImage from "@/assets/hero-sales.jpeg.asset.json";
+import logoImage from "@/assets/sales-logo.jpeg.asset.json";
 
 const phone = "5585988016749";
 const whatsappText = encodeURIComponent("Olá! Gostaria de agendar um horário na Sales Barbearia Ancuri.");
@@ -175,7 +176,12 @@ function Index() {
       {/* Services Section */}
       <section id="servicos" className="py-24">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-16 text-center">
+          <div className="mb-16 flex flex-col items-center text-center">
+            <img
+              src={logoImage.url}
+              alt="Sales Barbearia Ancuri"
+              className="mb-8 w-full max-w-md rounded-2xl border border-primary/20 shadow-2xl shadow-primary/10"
+            />
             <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossos <span className="text-primary">Serviços</span></h2>
             <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-primary" />
             <p className="mt-6 text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
