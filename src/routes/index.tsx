@@ -295,7 +295,7 @@ function Index() {
           
           <div className="grid gap-8 md:grid-cols-3">
             {testimonials.map((t) => (
-              <div key={t.name} className="flex flex-col rounded-3xl border border-white/5 bg-card/40 p-8 text-left">
+              <div key={t.name} className="flex flex-col rounded-3xl border border-white/5 bg-card/40 p-8 text-left transition-all duration-300 hover:bg-card/60 hover:border-primary/20 animate-reveal-up" style={{ animationDelay: `${testimonials.indexOf(t) * 150}ms` }}>
                 <div className="mb-4 flex gap-1">
                   {[...Array(t.rating)].map((_, i) => (
                     <Star key={i} size={16} className="fill-primary text-primary" />
