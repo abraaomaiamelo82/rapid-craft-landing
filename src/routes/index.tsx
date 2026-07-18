@@ -1,405 +1,384 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type { FormEvent } from "react";
-import {
-  ArrowRight,
-  CalendarDays,
-  Clock,
+import { 
+  Scissors, 
+  CalendarDays, 
+  Wifi, 
+  Car, 
+  Accessibility, 
+  Baby, 
+  Star, 
+  Instagram, 
+  Facebook, 
+  MessageSquare,
   MapPin,
-  Phone,
-  Scissors,
-  Sparkles,
-  Star,
+  Clock,
+  CreditCard,
+  Wallet,
+  Smartphone
 } from "lucide-react";
+import { useState } from "react";
 
-import heroImage from "../assets/benicios-hero.jpg";
-import corteImage from "../assets/benicios-corte.jpg";
-import barbaImage from "../assets/benicios-barba.jpg";
-import tratamentoImage from "../assets/benicios-tratamento.jpg";
-
-const phone = "5585997739843";
-const whatsappText = encodeURIComponent(
-  "Olá, Benício’s Barber Shop! Quero agendar um horário."
-);
+const phone = "5585988016749";
+const whatsappText = encodeURIComponent("Olá! Gostaria de agendar um horário na Sales Barbearia Ancuri.");
 const whatsappUrl = `https://wa.me/${phone}?text=${whatsappText}`;
 
 const services = [
-  {
-    title: "Corte Masculino",
-    price: "R$ 60",
-    description:
-      "Degradê limpo, acabamento preciso e consultoria de estilo para valorizar seu rosto.",
-    image: corteImage,
-    alt: "Corte masculino com degradê em barbearia premium",
-  },
-  {
-    title: "Barba",
-    price: "R$ 45",
-    description:
-      "Toalha quente, navalha e finalização alinhada para uma barba marcante e bem desenhada.",
-    image: barbaImage,
-    alt: "Barba sendo alinhada com navalha em barbearia premium",
-  },
-  {
-    title: "Tratamento Capilar",
-    price: "R$ 80",
-    description:
-      "Cuidado completo para força, brilho e controle dos fios com produtos profissionais.",
-    image: tratamentoImage,
-    alt: "Tratamento capilar masculino em ambiente de barbearia",
-  },
-];
-
-const gallery = [
-  { image: heroImage, alt: "Interior premium da Benício’s Barber Shop" },
-  { image: corteImage, alt: "Acabamento de corte masculino" },
-  { image: barbaImage, alt: "Serviço de barba com navalha" },
-  { image: tratamentoImage, alt: "Finalização de tratamento capilar masculino" },
-];
-
-const stats = [
-  { value: "15+", label: "anos de experiência" },
-  { value: "10.000+", label: "clientes atendidos" },
-  { value: "5", label: "barbeiros especialistas" },
-  { value: "4.9", label: "nota de avaliação" },
+  { name: "Barba", price: "R$ 25,00", duration: "45 min", description: "A partir de R$ 25,00" },
+  { name: "Corte Degradê", price: "R$ 30,00", duration: "45 min", description: "Corte moderno com transição suave" },
+  { name: "Corte Degradê Navalhado", price: "R$ 30,00", duration: "45 min", description: "Acabamento ultra rente com navalha" },
+  { name: "Corte Social", price: "R$ 30,00", duration: "45 min", description: "Corte clássico e elegante" },
+  { name: "Degradê + Barba", price: "R$ 45,00", duration: "60 min", description: "Combo completo de estilo" },
+  { name: "Pezinho", price: "R$ 10,00", duration: "15 min", description: "Apenas o contorno" },
+  { name: "Risquinho", price: "R$ 10,00", duration: "15 min", description: "Detalhe artístico no corte" },
+  { name: "Sobrancelha", price: "Consultar", duration: "15 min", description: "Design e limpeza" },
+  { name: "Social + Barba", price: "R$ 45,00", duration: "60 min", description: "O clássico completo" },
 ];
 
 const testimonials = [
-  {
-    name: "Tiago Alcântara",
-    meta: "4 avaliações · 3 semanas atrás",
-    text: "Muito bom! Deixou meu cabelo e o cabelo dos meus filhos excelentes e tratou meu filho menor muito bem.",
-  },
-  {
-    name: "Denise Nogueira",
-    meta: "2 avaliações · 5 meses atrás",
-    text: "Perfeita 🤩 nota infinita. Meu filho é uma criança autista, ele ficou super à vontade com o Helder, sendo que com o barbeiro antigo não parava quieto. Muito satisfeita pelo excelente trabalho.",
-  },
-  {
-    name: "Marcos Vinícius",
-    meta: "Cliente fiel · 2 meses atrás",
-    text: "Atendimento impecável, ambiente agradável e acabamento perfeito. Virei cliente fiel da Benício’s.",
-  },
+  { name: "Tiago Alcântara", rating: 5, text: "Muito bom! Deixou meu cabelo e o cabelo dos meus filhos excelentes.", date: "3 semanas atrás" },
+  { name: "Denise Nogueira", rating: 5, text: "Perfeita 🤩 nota infinita… ambiente acolhedor e profissionalismo.", date: "5 meses atrás" },
+  { name: "Marcos Oliveira", rating: 5, text: "Excelente atendimento e técnica impecável. Recomendo fortemente.", date: "1 mês atrás" },
 ];
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function openWhatsApp(message: string) {
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-  window.open(url, "_blank", "noopener,noreferrer");
-}
-
-function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
-  event.preventDefault();
-  const form = new FormData(event.currentTarget);
-  const name = String(form.get("name") || "").trim();
-  const service = String(form.get("service") || "").trim();
-  const message = String(form.get("message") || "").trim();
-  const composedMessage = [
-    "Olá, Benício’s Barber Shop! Quero agendar um horário.",
-    name ? `Nome: ${name}` : "",
-    service ? `Serviço: ${service}` : "",
-    message ? `Mensagem: ${message}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
-
-  openWhatsApp(composedMessage);
-}
-
 function Index() {
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
+  const amenities = [
+    { icon: Wifi, label: "Wi-fi", description: "Conexão de alta velocidade gratuita" },
+    { icon: Car, label: "Estacionamento", description: "Vagas privativas para clientes" },
+    { icon: Accessibility, label: "Acessibilidade", description: "Ambiente adaptado para todos" },
+    { icon: Baby, label: "Atende crianças", description: "Especialistas em corte kids" },
+  ];
+
   return (
-    <main className="barber-shell min-h-screen overflow-hidden bg-background text-foreground">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Navegação principal">
-          <a href="#inicio" className="group inline-flex items-center gap-3" aria-label="Benício’s Barber Shop - início">
-            <span className="grid size-10 place-items-center rounded-md border border-primary/50 bg-primary text-primary-foreground shadow-lg shadow-primary/20">
-              <Scissors className="size-5" aria-hidden="true" />
-            </span>
-            <span className="leading-none">
-              <span className="block font-heading text-lg font-bold uppercase tracking-normal">Benício’s</span>
-              <span className="block text-xs font-bold uppercase tracking-normal text-primary">Barber Shop</span>
-            </span>
-          </a>
-
-          <div className="hidden items-center gap-7 text-sm font-bold uppercase tracking-normal text-muted-foreground md:flex">
-            <a className="transition hover:text-primary" href="#servicos">Serviços</a>
-            <a className="transition hover:text-primary" href="#galeria">Galeria</a>
-            <a className="transition hover:text-primary" href="#sobre">Sobre</a>
-            <a className="transition hover:text-primary" href="#contato">Contato</a>
-          </div>
-
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-black uppercase tracking-normal text-primary-foreground transition hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
-          >
-            <CalendarDays className="size-4" aria-hidden="true" />
-            <span className="hidden sm:inline">Agendar</span>
-          </a>
-        </nav>
-      </header>
-
-      <section id="inicio" className="relative min-h-[92vh] overflow-hidden pt-20 sm:min-h-[88vh]">
-        <img
-          src={heroImage}
-          alt="Ambiente premium da Benício’s Barber Shop em Itaitinga"
-          width={1600}
-          height={1000}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-background/72" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/82 to-background/20" />
-        <div className="relative mx-auto flex min-h-[calc(92vh-5rem)] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="reveal-up mb-6 inline-flex items-center gap-2 border border-primary/45 bg-secondary/75 px-3 py-2 text-xs font-black uppercase tracking-normal text-primary backdrop-blur">
-              <Star className="size-4 fill-current" aria-hidden="true" />
-              Barbearia premium em Itaitinga
-            </div>
-            <h1 className="reveal-up font-heading text-5xl font-bold uppercase leading-tight tracking-normal text-foreground sm:text-6xl lg:text-7xl">
-              Benício’s Barber Shop
-            </h1>
-            <p className="reveal-up reveal-delay-1 mt-5 max-w-2xl text-xl font-bold text-primary sm:text-2xl">
-              Onde o corte vira arte.
-            </p>
-            <p className="reveal-up reveal-delay-1 mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
-              Corte, barba e tratamento capilar com padrão de excelência, atendimento pontual e acabamento pensado para homens que exigem presença.
-            </p>
-            <div className="reveal-up reveal-delay-2 mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-4 text-sm font-black uppercase tracking-normal text-primary-foreground transition hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
-              >
-                <CalendarDays className="size-5" aria-hidden="true" />
-                Agendamento Online
-                <ArrowRight className="size-5" aria-hidden="true" />
-              </a>
-              <a
-                href="tel:+5585997739843"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-primary/45 bg-secondary/80 px-6 py-4 text-sm font-black uppercase tracking-normal text-foreground transition hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
-              >
-                <Phone className="size-5" aria-hidden="true" />
-                Entrar em contato
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-secondary/55 px-4 py-5 sm:px-6 lg:px-8" aria-label="Diferenciais">
-        <div className="mx-auto grid max-w-7xl gap-4 text-sm font-bold uppercase tracking-normal text-muted-foreground sm:grid-cols-3">
-          <div className="flex items-center gap-3"><Sparkles className="size-5 text-primary" aria-hidden="true" /> Acabamento de alto padrão</div>
-          <div className="flex items-center gap-3"><Clock className="size-5 text-primary" aria-hidden="true" /> Atendimento com hora marcada</div>
-          <div className="flex items-center gap-3"><MapPin className="size-5 text-primary" aria-hidden="true" /> R. Cândido Meireles, 1269</div>
-        </div>
-      </section>
-
-      <section id="servicos" className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-2xl">
-            <p className="font-heading text-sm font-bold uppercase tracking-normal text-primary">Serviços</p>
-            <h2 className="mt-3 font-heading text-4xl font-bold uppercase tracking-normal text-foreground sm:text-5xl">
-              Sua imagem tratada como assinatura.
-            </h2>
-          </div>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {services.map((service) => (
-              <article key={service.title} className="group overflow-hidden rounded-md border border-border bg-card">
-                <div className="aspect-[4/3] overflow-hidden bg-secondary">
-                  <img
-                    src={service.image}
-                    alt={service.alt}
-                    width={900}
-                    height={700}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="font-heading text-2xl font-bold uppercase tracking-normal text-foreground">{service.title}</h3>
-                    <span className="shrink-0 rounded-md bg-primary px-3 py-1 text-sm font-black text-primary-foreground">{service.price}</span>
-                  </div>
-                  <p className="mt-4 min-h-20 leading-7 text-muted-foreground">{service.description}</p>
-                  <button
-                    type="button"
-                    onClick={() => openWhatsApp(`Olá, Benício’s Barber Shop! Quero agendar: ${service.title}.`)}
-                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary/45 bg-secondary px-4 py-3 text-sm font-black uppercase tracking-normal text-foreground transition hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
-                  >
-                    <CalendarDays className="size-4" aria-hidden="true" />
-                    Agendar serviço
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="galeria" className="bg-secondary/55 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div>
-              <p className="font-heading text-sm font-bold uppercase tracking-normal text-primary">Galeria</p>
-              <h2 className="mt-3 font-heading text-4xl font-bold uppercase tracking-normal sm:text-5xl">
-                Ambiente, técnica e resultado no mesmo padrão.
-              </h2>
-            </div>
-            <p className="max-w-2xl leading-8 text-muted-foreground lg:justify-self-end">
-              Cada detalhe foi pensado para entregar uma experiência local-first: atendimento próximo, execução firme e visual premium sem exageros.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {gallery.map((item, index) => (
-              <figure key={item.alt} className={index === 0 ? "overflow-hidden rounded-md border border-border bg-card sm:col-span-2 lg:col-span-2" : "overflow-hidden rounded-md border border-border bg-card"}>
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  width={index === 0 ? 1600 : 900}
-                  height={index === 0 ? 1000 : 700}
-                  loading="lazy"
-                  className="h-72 w-full object-cover sm:h-80"
-                />
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="sobre" className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-          <div className="subtle-float overflow-hidden rounded-md border border-primary/30 bg-card">
-            <img
-              src={heroImage}
-              alt="Cadeiras e espelhos da Benício’s Barber Shop"
-              width={1600}
-              height={1000}
-              loading="lazy"
-              className="h-full min-h-96 w-full object-cover"
-            />
-          </div>
-          <div>
-            <p className="font-heading text-sm font-bold uppercase tracking-normal text-primary">Sobre Nós</p>
-            <h2 className="mt-3 font-heading text-4xl font-bold uppercase tracking-normal sm:text-5xl">
-              Tradição, autoridade e excelência no cuidado masculino.
-            </h2>
-            <p className="mt-6 leading-8 text-muted-foreground">
-              A Benício’s Barber Shop une técnica clássica, acabamento moderno e atendimento direto para transformar o ritual do corte em uma experiência de confiança. Aqui, cada cliente recebe orientação, precisão e uma entrega consistente do primeiro contato à finalização.
-            </p>
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              {stats.map((stat) => (
-                <div key={stat.label} className="rounded-md border border-border bg-secondary p-5">
-                  <strong className="block font-heading text-3xl font-bold text-primary">{stat.value}</strong>
-                  <span className="mt-1 block text-sm font-bold uppercase tracking-normal text-muted-foreground">{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="depoimentos" className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-2xl">
-            <p className="font-heading text-sm font-bold uppercase tracking-normal text-primary">Depoimentos</p>
-            <h2 className="mt-3 font-heading text-4xl font-bold uppercase tracking-normal sm:text-5xl">
-              Quem confia na Benício’s recomenda.
-            </h2>
-          </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {testimonials.map((t) => (
-              <article key={t.name} className="flex flex-col rounded-md border border-border bg-card p-6">
-                <div className="flex items-center gap-1 text-primary" aria-label="Avaliação 5 estrelas">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="size-4 fill-current" aria-hidden="true" />
+    <div className="flex min-h-screen flex-col bg-background font-sans text-foreground selection:bg-primary selection:text-primary-foreground">
+      {/* Header */}
+      <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-background/80 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
+          <div className="flex items-center gap-3">
+            <div className="flex flex-col">
+              <h1 className="font-heading text-xl font-bold tracking-tight text-white md:text-2xl">
+                SALES BARBEARIA <span className="text-primary">ANCURI</span>
+              </h1>
+              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <span className="font-bold text-primary">4.9</span>
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={10} className="fill-primary text-primary" />
                   ))}
                 </div>
-                <p className="mt-4 flex-1 leading-7 text-muted-foreground">“{t.text}”</p>
-                <div className="mt-6 border-t border-border pt-4">
-                  <strong className="block font-heading text-base font-bold uppercase tracking-normal text-foreground">{t.name}</strong>
-                  <span className="text-xs font-bold uppercase tracking-normal text-muted-foreground">{t.meta}</span>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="contato" className="border-t border-border bg-secondary/55 px-4 py-20 sm:px-6 lg:px-8">
-
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="font-heading text-sm font-bold uppercase tracking-normal text-primary">Contato</p>
-            <h2 className="mt-3 font-heading text-4xl font-bold uppercase tracking-normal sm:text-5xl">
-              Reserve seu horário hoje.
-            </h2>
-            <div className="mt-8 space-y-4">
-              <a href="https://maps.google.com/?q=R.%20C%C3%A2ndido%20Meireles%2C%201269%2C%20Itaitinga%20-%20CE%2C%2061880-000" target="_blank" rel="noreferrer" className="flex gap-4 rounded-md border border-border bg-card p-5 transition hover:border-primary">
-                <MapPin className="mt-1 size-5 shrink-0 text-primary" aria-hidden="true" />
-                <span><strong className="block text-foreground">Endereço</strong><span className="text-muted-foreground">R. Cândido Meireles, 1269, Itaitinga - CE, 61880-000</span></span>
-              </a>
-              <a href="tel:+5585997739843" className="flex gap-4 rounded-md border border-border bg-card p-5 transition hover:border-primary">
-                <Phone className="mt-1 size-5 shrink-0 text-primary" aria-hidden="true" />
-                <span><strong className="block text-foreground">Telefone</strong><span className="text-muted-foreground">(85) 99773-9843</span></span>
-              </a>
-              <div className="flex gap-4 rounded-md border border-border bg-card p-5">
-                <Clock className="mt-1 size-5 shrink-0 text-primary" aria-hidden="true" />
-                <span><strong className="block text-foreground">Horário de funcionamento</strong><span className="text-muted-foreground">Segunda a sábado, com agendamento online</span></span>
+                <span className="ml-1">(+100 avaliações)</span>
               </div>
             </div>
           </div>
 
-          <form onSubmit={handleContactSubmit} className="rounded-md border border-primary/25 bg-card p-6 shadow-2xl shadow-primary/10 sm:p-8">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label className="space-y-2 text-sm font-bold uppercase tracking-normal text-muted-foreground">
-                Nome
-                <input name="name" required className="mt-2 w-full rounded-md border border-input bg-background px-4 py-3 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-ring" placeholder="Seu nome" />
-              </label>
-              <label className="space-y-2 text-sm font-bold uppercase tracking-normal text-muted-foreground">
-                Telefone
-                <input name="phone" type="tel" required className="mt-2 w-full rounded-md border border-input bg-background px-4 py-3 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-ring" placeholder="(85) 00000-0000" />
-              </label>
-            </div>
-            <label className="mt-5 block space-y-2 text-sm font-bold uppercase tracking-normal text-muted-foreground">
-              Serviço desejado
-              <select name="service" required className="mt-2 w-full rounded-md border border-input bg-background px-4 py-3 text-base text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-ring">
-                <option value="">Selecione um serviço</option>
-                <option>Corte Masculino</option>
-                <option>Barba</option>
-                <option>Tratamento Capilar</option>
-                <option>Pacote completo</option>
-              </select>
-            </label>
-            <label className="mt-5 block space-y-2 text-sm font-bold uppercase tracking-normal text-muted-foreground">
-              Mensagem
-              <textarea name="message" rows={4} className="mt-2 w-full resize-none rounded-md border border-input bg-background px-4 py-3 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-ring" placeholder="Melhor dia e horário para atendimento" />
-            </label>
-            <button
-              type="submit"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-4 text-sm font-black uppercase tracking-normal text-primary-foreground transition hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+          <nav className="hidden items-center gap-8 lg:flex">
+            <a href="#inicio" className="text-sm font-medium transition-colors hover:text-primary">Início</a>
+            <a href="#servicos" className="text-sm font-medium transition-colors hover:text-primary">Serviços</a>
+            <a href="#profissionais" className="text-sm font-medium transition-colors hover:text-primary">Profissionais</a>
+            <a href="#avaliacoes" className="text-sm font-medium transition-colors hover:text-primary">Avaliações</a>
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              className="hidden rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:block"
             >
-              <CalendarDays className="size-5" aria-hidden="true" />
-              Entrar em contato
-              <ArrowRight className="size-5" aria-hidden="true" />
-            </button>
-          </form>
+              Meus Agendamentos
+            </a>
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              className="rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-transform hover:scale-105"
+            >
+              Agendar agora
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section id="inicio" className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
+        
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+          <span className="mb-4 inline-block rounded-full bg-primary/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+            A melhor experiência de Itaitinga
+          </span>
+          <h2 className="mb-6 font-heading text-5xl font-extrabold leading-tight text-white md:text-7xl">
+            Uma nova experiência para uma <span className="italic text-primary">antiga tradição</span>.
+          </h2>
+          <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground md:text-xl">
+            Excelência no atendimento, precisão no corte e o estilo que você merece em um ambiente exclusivo e sofisticado.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-10 py-5 text-lg font-bold text-primary-foreground shadow-2xl shadow-primary/40 transition-all hover:scale-105 sm:w-auto"
+            >
+              <CalendarDays size={24} />
+              Agendar agora
+            </a>
+            <div className="flex items-center gap-8 border-l border-white/10 pl-8 hidden md:flex">
+              <div>
+                <p className="text-2xl font-bold text-white">4.9</p>
+                <p className="text-xs text-muted-foreground uppercase">Avaliação Google</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-white">+5k</p>
+                <p className="text-xs text-muted-foreground uppercase">Atendimentos</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <footer className="border-t border-border px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-bold uppercase tracking-normal text-foreground">Benício’s Barber Shop</p>
-          <p>Onde o corte vira arte · Itaitinga - CE</p>
-          <a className="font-bold text-primary transition hover:text-accent" href={whatsappUrl} target="_blank" rel="noreferrer">
-            Agendar pelo WhatsApp
-          </a>
+      {/* Amenities Section */}
+      <section className="border-y border-white/5 bg-secondary/30 py-12">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+            {amenities.map((item) => (
+              <div 
+                key={item.label} 
+                className="relative cursor-pointer transition-transform hover:scale-110"
+                onMouseEnter={() => setActiveTooltip(item.label)}
+                onMouseLeave={() => setActiveTooltip(null)}
+                onClick={() => setActiveTooltip(activeTooltip === item.label ? null : item.label)}
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <div className="rounded-2xl bg-white/5 p-4 text-primary backdrop-blur-sm transition-colors hover:bg-primary/20">
+                    <item.icon size={28} />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
+                </div>
+                {activeTooltip === item.label && (
+                  <div className="absolute bottom-full left-1/2 mb-4 w-48 -translate-x-1/2 rounded-lg bg-card p-3 text-center text-xs shadow-xl border border-white/10 animate-in fade-in slide-in-from-bottom-2">
+                    <p className="font-bold text-primary mb-1">{item.label}</p>
+                    <p className="text-muted-foreground">{item.description}</p>
+                    <div className="absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rotate-45 bg-card border-r border-b border-white/10" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="servicos" className="py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-16 text-center">
+            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossos <span className="text-primary">Serviços</span></h2>
+            <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-primary" />
+            <p className="mt-6 text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <div key={service.name} className="group relative overflow-hidden rounded-3xl border border-white/5 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card">
+                <div className="mb-6 flex items-start justify-between">
+                  <div className="rounded-2xl bg-primary/10 p-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Scissors size={24} />
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-primary">{service.price}</p>
+                    <p className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
+                      <Clock size={12} /> {service.duration}
+                    </p>
+                  </div>
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-white">{service.name}</h3>
+                <p className="mb-8 text-sm text-muted-foreground">{service.description}</p>
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank" 
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 py-3 text-sm font-bold text-white transition-all hover:bg-primary hover:text-primary-foreground"
+                >
+                  Agendar este serviço
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Location Section */}
+      <section id="localizacao" className="bg-secondary/20 py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 className="mb-8 font-heading text-4xl font-bold text-white">Onde nos <span className="text-primary">encontrar</span></h2>
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white">Endereço</h4>
+                    <p className="text-muted-foreground">Av Dionísio Leonel Alencar, 2317 - 1209 - 61880-000, Ancuri - Itaitinga/CE</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                    <Clock size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white">Horário de Atendimento</h4>
+                    <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+                      <li className="flex justify-between border-b border-white/5 pb-1"><span>Segunda a Sábado</span> <span>07:00 - 12:00 e 13:00 - 20:00</span></li>
+                      <li className="flex justify-between pt-1"><span>Domingo</span> <span className="font-bold text-red-400">Fechado</span></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                    <CreditCard size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white">Formas de Pagamento</h4>
+                    <div className="mt-3 flex gap-4 text-muted-foreground">
+                      <div className="flex flex-col items-center gap-1">
+                        <Wallet size={20} />
+                        <span className="text-[10px] uppercase font-bold">Dinheiro</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-1">
+                        <CreditCard size={20} />
+                        <span className="text-[10px] uppercase font-bold">Crédito</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-1">
+                        <Smartphone size={20} />
+                        <span className="text-[10px] uppercase font-bold">Pix</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-card p-2 shadow-2xl">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.026405232491!2d-38.51465242502621!3d-3.8398459961340176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74ec81014cc67%3A0xe5a363a0a6713289!2sAv.%20Dion%C3%ADsio%20Leonel%20Alencar%2C%202317%20-%20Ancuri%2C%20Fortaleza%20-%20CE%2C%2060874-212!5e0!3m2!1spt-BR!2sbr!4v1715694852943!5m2!1spt-BR!2sbr" 
+                width="100%" 
+                height="450" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-2xl grayscale contrast-125 opacity-80"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section id="avaliacoes" className="py-24">
+        <div className="mx-auto max-w-7xl px-4 text-center">
+          <h2 className="mb-16 font-heading text-4xl font-bold text-white">O que dizem nossos <span className="text-primary">clientes</span></h2>
+          
+          <div className="grid gap-8 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <div key={t.name} className="flex flex-col rounded-3xl border border-white/5 bg-card/40 p-8 text-left">
+                <div className="mb-4 flex gap-1">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Star key={i} size={16} className="fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="mb-8 flex-1 italic text-muted-foreground">"{t.text}"</p>
+                <div className="flex items-center gap-4 border-t border-white/5 pt-6">
+                  <div className="size-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">
+                    {t.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="font-bold text-white">{t.name}</p>
+                    <p className="text-xs text-muted-foreground">{t.date}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WhatsApp Floating Button */}
+      <a 
+        href={whatsappUrl} 
+        target="_blank" 
+        className="fixed bottom-8 right-8 z-[100] flex size-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-transform hover:scale-110 active:scale-95"
+        aria-label="Agendar via WhatsApp"
+      >
+        <MessageSquare size={32} />
+      </a>
+
+      {/* Footer */}
+      <footer className="border-t border-white/5 bg-background py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid gap-12 lg:grid-cols-4">
+            <div className="lg:col-span-1">
+              <h2 className="font-heading text-2xl font-bold text-white mb-4">
+                SALES BARBEARIA <span className="text-primary">ANCURI</span>
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Elevando o padrão de barbearia no Ancuri. Cortes modernos, ambiente sofisticado e tradição em cada detalhe.
+              </p>
+              <div className="mt-8 flex gap-4">
+                <a href="#" className="rounded-full bg-white/5 p-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"><Instagram size={20} /></a>
+                <a href="#" className="rounded-full bg-white/5 p-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"><Facebook size={20} /></a>
+                <a href={whatsappUrl} className="rounded-full bg-white/5 p-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"><MessageSquare size={20} /></a>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-8 lg:col-span-2">
+              <div>
+                <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Acesso Rápido</h4>
+                <ul className="space-y-4 text-sm text-muted-foreground">
+                  <li><a href="#inicio" className="transition-colors hover:text-primary">Início</a></li>
+                  <li><a href="#servicos" className="transition-colors hover:text-primary">Serviços</a></li>
+                  <li><a href="#avaliacoes" className="transition-colors hover:text-primary">Avaliações</a></li>
+                  <li><a href={whatsappUrl} className="transition-colors hover:text-primary">Agendar Horário</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Informações</h4>
+                <ul className="space-y-4 text-sm text-muted-foreground">
+                  <li><a href="#localizacao" className="transition-colors hover:text-primary">Localização</a></li>
+                  <li><a href="#" className="transition-colors hover:text-primary">Favoritos</a></li>
+                  <li><a href="#" className="transition-colors hover:text-primary">Meus Agendamentos</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="lg:col-span-1">
+              <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Fale Conosco</h4>
+              <p className="text-sm text-muted-foreground mb-4">(85) 98801-6749</p>
+              <a 
+                href={whatsappUrl} 
+                target="_blank" 
+                className="inline-block rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-transform hover:scale-105"
+              >
+                Chamar no WhatsApp
+              </a>
+            </div>
+          </div>
+          
+          <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-xs text-muted-foreground md:flex-row">
+            <p>© {new Date().getFullYear()} Sales Barbearia Ancuri. Todos os direitos reservados.</p>
+            <div className="flex gap-8">
+              <a href="#" className="hover:text-primary">Termos de Uso</a>
+              <a href="#" className="hover:text-primary">Privacidade</a>
+            </div>
+          </div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
