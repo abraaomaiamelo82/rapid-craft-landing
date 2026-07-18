@@ -187,8 +187,9 @@ function Index() {
                 <img
                   src={logoImage.url}
                   alt="Sales Barbearia Ancuri"
-                  className="size-36 rounded-full object-cover md:size-48"
+                  className="size-56 rounded-full object-contain bg-background/60 p-3 md:size-72"
                 />
+
               </div>
               <div className="mt-6">
                 <span className="inline-block rounded-full bg-primary/10 px-6 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-primary border border-primary/20 backdrop-blur-sm">
