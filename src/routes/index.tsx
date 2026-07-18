@@ -190,7 +190,7 @@ function Index() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <div key={service.name} className="group relative overflow-hidden rounded-3xl border border-white/5 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card">
+              <div key={service.name} className="group glass-card overflow-hidden rounded-3xl p-8 backdrop-blur-sm animate-reveal-up" style={{ animationDelay: `${services.indexOf(service) * 100}ms` }}>
                 <div className="mb-6 flex items-start justify-between">
                   <div className="rounded-2xl bg-primary/10 p-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <Scissors size={24} />
