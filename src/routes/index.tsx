@@ -107,8 +107,8 @@ function Index() {
 
       {/* Hero Section */}
       <section id="inicio" className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: `url(${heroImage.url})` }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
+        <div className="absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-1000" style={{ backgroundImage: `url(${heroImage.url})` }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
         
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <span className="mb-4 inline-block rounded-full bg-primary/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
@@ -178,16 +178,21 @@ function Index() {
       <section id="servicos" className="py-24">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-16 flex flex-col items-center text-center">
-            <div className="mb-8 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/20 via-primary/5 to-transparent p-1 shadow-2xl shadow-primary/20 ring-1 ring-primary/30">
-              <img
-                src={logoImage.url}
-                alt="Sales Barbearia Ancuri"
-                className="size-32 rounded-full object-cover md:size-40"
-              />
+            <div className="mb-10 relative">
+              <div className="absolute -inset-4 rounded-full bg-primary/10 blur-xl animate-pulse" />
+              <div className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/30 via-primary/5 to-transparent p-1 shadow-[0_0_50px_rgba(212,175,55,0.2)] ring-1 ring-primary/40">
+                <img
+                  src={logoImage.url}
+                  alt="Sales Barbearia Ancuri"
+                  className="size-36 rounded-full object-cover md:size-48"
+                />
+              </div>
+              <div className="mt-6">
+                <span className="inline-block rounded-full bg-primary/10 px-6 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-primary border border-primary/20 backdrop-blur-sm">
+                  Nossa Casa
+                </span>
+              </div>
             </div>
-            <span className="mb-3 inline-block rounded-full bg-primary/10 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary">
-              Nossa Casa
-            </span>
             <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossos <span className="italic text-primary">Serviços</span></h2>
             <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-primary" />
             <p className="mt-6 max-w-md text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
