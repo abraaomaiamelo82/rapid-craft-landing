@@ -17,6 +17,7 @@ import {
   Smartphone
 } from "lucide-react";
 import { useState } from "react";
+import heroImage from "@/assets/hero-sales.jpeg.asset.json";
 
 const phone = "5585988016749";
 const whatsappText = encodeURIComponent("Olá! Gostaria de agendar um horário na Sales Barbearia Ancuri.");
