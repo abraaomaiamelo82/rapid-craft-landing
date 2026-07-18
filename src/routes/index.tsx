@@ -150,7 +150,7 @@ function Index() {
             {amenities.map((item) => (
               <div 
                 key={item.label} 
-                className="relative cursor-pointer transition-transform hover:scale-110"
+                className="relative cursor-pointer transition-all duration-300 hover:scale-110 group/amenity"
                 onMouseEnter={() => setActiveTooltip(item.label)}
                 onMouseLeave={() => setActiveTooltip(null)}
                 onClick={() => setActiveTooltip(activeTooltip === item.label ? null : item.label)}
