@@ -105,7 +105,7 @@ function Index() {
 
       {/* Hero Section */}
       <section id="inicio" className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 blur-[2px]" />
+        <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: `url(${heroImage.url})` }} />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
         
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
