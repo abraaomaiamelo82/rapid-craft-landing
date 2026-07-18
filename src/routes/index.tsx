@@ -114,13 +114,13 @@ function Index() {
           <span className="mb-4 inline-block rounded-full bg-primary/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
             A melhor experiência de Itaitinga
           </span>
-          <h2 className="mb-6 font-heading text-5xl font-extrabold leading-tight text-white md:text-7xl">
+          <h2 className="mb-6 font-heading text-5xl font-extrabold leading-tight text-white md:text-7xl animate-reveal-up">
             Uma nova experiência para uma <span className="italic text-primary">antiga tradição</span>.
           </h2>
-          <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground md:text-xl">
+          <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground md:text-xl animate-reveal-up [animation-delay:200ms] text-balance">
             Excelência no atendimento, precisão no corte e o estilo que você merece em um ambiente exclusivo e sofisticado.
           </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row animate-reveal-up [animation-delay:400ms]">
             <a 
               href={whatsappUrl} 
               target="_blank" 
@@ -150,13 +150,13 @@ function Index() {
             {amenities.map((item) => (
               <div 
                 key={item.label} 
-                className="relative cursor-pointer transition-transform hover:scale-110"
+                className="relative cursor-pointer transition-all duration-300 hover:scale-110 group/amenity"
                 onMouseEnter={() => setActiveTooltip(item.label)}
                 onMouseLeave={() => setActiveTooltip(null)}
                 onClick={() => setActiveTooltip(activeTooltip === item.label ? null : item.label)}
               >
                 <div className="flex flex-col items-center gap-2">
-                  <div className="rounded-2xl bg-white/5 p-4 text-primary backdrop-blur-sm transition-colors hover:bg-primary/20">
+                  <div className="rounded-2xl bg-white/5 p-4 text-primary backdrop-blur-sm transition-all duration-300 group-hover/amenity:bg-primary/20 group-hover/amenity:shadow-[0_0_20px_rgba(184,146,64,0.3)]">
                     <item.icon size={28} />
                   </div>
                   <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
@@ -190,7 +190,7 @@ function Index() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <div key={service.name} className="group relative overflow-hidden rounded-3xl border border-white/5 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card">
+              <div key={service.name} className="group glass-card overflow-hidden rounded-3xl p-8 backdrop-blur-sm animate-reveal-up" style={{ animationDelay: `${services.indexOf(service) * 100}ms` }}>
                 <div className="mb-6 flex items-start justify-between">
                   <div className="rounded-2xl bg-primary/10 p-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <Scissors size={24} />
@@ -295,7 +295,7 @@ function Index() {
           
           <div className="grid gap-8 md:grid-cols-3">
             {testimonials.map((t) => (
-              <div key={t.name} className="flex flex-col rounded-3xl border border-white/5 bg-card/40 p-8 text-left">
+              <div key={t.name} className="flex flex-col rounded-3xl border border-white/5 bg-card/40 p-8 text-left transition-all duration-300 hover:bg-card/60 hover:border-primary/20 animate-reveal-up" style={{ animationDelay: `${testimonials.indexOf(t) * 150}ms` }}>
                 <div className="mb-4 flex gap-1">
                   {[...Array(t.rating)].map((_, i) => (
                     <Star key={i} size={16} className="fill-primary text-primary" />
@@ -367,7 +367,6 @@ function Index() {
 
             <div className="lg:col-span-1">
               <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Fale Conosco</h4>
-              <p className="text-sm text-muted-foreground mb-4">(85) 98801-6749</p>
               <a 
                 href={whatsappUrl} 
                 target="_blank" 
