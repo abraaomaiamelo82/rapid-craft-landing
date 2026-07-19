@@ -147,25 +147,25 @@ function Index() {
       </section>
 
       {/* Amenities Section */}
-      <section className="border-y border-white/5 bg-secondary/30 py-12">
+      <section className="border-y border-white/5 bg-secondary/30 py-8 sm:py-12">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 md:flex md:flex-wrap md:items-center md:justify-center md:gap-16">
             {amenities.map((item) => (
-              <div 
-                key={item.label} 
-                className="relative cursor-pointer transition-all duration-300 hover:scale-110 group/amenity"
+              <div
+                key={item.label}
+                className="relative cursor-pointer transition-all duration-300 hover:scale-105 md:hover:scale-110 group/amenity"
                 onMouseEnter={() => setActiveTooltip(item.label)}
                 onMouseLeave={() => setActiveTooltip(null)}
                 onClick={() => setActiveTooltip(activeTooltip === item.label ? null : item.label)}
               >
-                <div className="flex flex-col items-center gap-2">
-                  <div className="rounded-2xl bg-white/5 p-4 text-primary backdrop-blur-sm transition-all duration-300 group-hover/amenity:bg-primary/20 group-hover/amenity:shadow-[0_0_20px_rgba(184,146,64,0.3)]">
-                    <item.icon size={28} />
+                <div className="flex flex-col items-center gap-2 text-center">
+                  <div className="rounded-2xl bg-white/5 p-3 sm:p-4 text-primary backdrop-blur-sm transition-all duration-300 group-hover/amenity:bg-primary/20 group-hover/amenity:shadow-[0_0_20px_rgba(184,146,64,0.3)]">
+                    <item.icon className="size-6 sm:size-7" />
                   </div>
-                  <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
+                  <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">{item.label}</span>
                 </div>
                 {activeTooltip === item.label && (
-                  <div className="absolute bottom-full left-1/2 mb-4 w-48 -translate-x-1/2 rounded-lg bg-card p-3 text-center text-xs shadow-xl border border-white/10 animate-in fade-in slide-in-from-bottom-2">
+                  <div className="absolute bottom-full left-1/2 mb-4 w-44 sm:w-48 -translate-x-1/2 rounded-lg bg-card p-3 text-center text-xs shadow-xl border border-white/10 animate-in fade-in slide-in-from-bottom-2 z-10">
                     <p className="font-bold text-primary mb-1">{item.label}</p>
                     <p className="text-muted-foreground">{item.description}</p>
                     <div className="absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rotate-45 bg-card border-r border-b border-white/10" />
