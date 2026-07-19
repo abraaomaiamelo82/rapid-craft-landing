@@ -391,6 +391,7 @@ function Index() {
 
             <div className="lg:col-span-1">
               <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Fale Conosco</h4>
+              <p className="mb-4 text-lg font-bold text-primary">{formattedPhone}</p>
               <a 
                 href={whatsappUrl} 
                 target="_blank" 
