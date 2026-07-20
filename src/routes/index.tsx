@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import heroImageNew from "@/assets/hero-sales-v2.jpeg.asset.json";
-const logoImage = "/images/logo.png";
+import logoImage from "@/assets/sales-logo-v2.jpeg.asset.json";
 const avatarTiago = "/images/avatar-tiago.jpg";
 const avatarDenise = "/images/avatar-denise.jpg";
 const avatarMarcos = "/images/avatar-marcos.jpg";
