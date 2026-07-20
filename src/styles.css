@@ -1,7 +1,7 @@
 :root {
   --background: oklch(0.08 0.01 270);
   --foreground: oklch(0.98 0.01 270);
-  --primary: oklch(0.85 0.01 270); /* Prata/Branco */
+  --primary: oklch(0.72 0.16 75);
   --primary-foreground: oklch(0.1 0.01 270);
   --secondary: oklch(0.12 0.02 270);
   --secondary-foreground: oklch(0.95 0.01 270);
@@ -12,7 +12,7 @@
   --accent-foreground: oklch(0.95 0.01 270);
   --muted: oklch(0.15 0.01 270);
   --muted-foreground: oklch(0.65 0.02 270);
-  --ring: oklch(0.85 0.01 270);
+  --ring: oklch(0.72 0.16 75);
 }
 
 @import "tailwindcss" source(none);
@@ -58,8 +58,8 @@
   }
 
   @keyframes glow {
-    from { box-shadow: 0 0 5px oklch(0.85 0.01 270 / 0.2); }
-    to { box-shadow: 0 0 20px oklch(0.85 0.01 270 / 0.4); }
+    from { box-shadow: 0 0 5px oklch(0.72 0.16 75 / 0.2); }
+    to { box-shadow: 0 0 20px oklch(0.72 0.16 75 / 0.4); }
   }
 }
 
