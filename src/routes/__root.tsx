@@ -84,19 +84,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Sales Barbearia Ancuri - Uma nova experiência para uma antiga tradição. Cortes, barba e tratamentos exclusivos em Itaitinga/CE.",
       },
       { name: "author", content: "Sales Barbearia Ancuri" },
-      { property: "og:title", content: "Sales Barbearia Ancuri | Barbearia Premium" },
+      { property: "og:title", content: "Sales Barbearia Ancuri | Estilo e Tradição" },
       {
         property: "og:description",
         content:
-          "Uma nova experiência para uma antiga tradição. Agende seu horário na melhor barbearia do Ancuri.",
+          "Sales Barbearia Ancuri - Uma nova experiência para uma antiga tradição. Cortes, barba e tratamentos exclusivos em Itaitinga/CE.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Sales Barbearia Ancuri" },
+      { name: "twitter:title", content: "Sales Barbearia Ancuri | Estilo e Tradição" },
       {
         name: "twitter:description",
-        content: "Barbearia premium em Itaitinga-CE. Agende seu horário.",
+        content: "Sales Barbearia Ancuri - Uma nova experiência para uma antiga tradição. Cortes, barba e tratamentos exclusivos em Itaitinga/CE.",
       },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/01c2aedb-4755-4b13-be4a-b7379c49fea9" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/01c2aedb-4755-4b13-be4a-b7379c49fea9" },
     ],
     links: [
       {
