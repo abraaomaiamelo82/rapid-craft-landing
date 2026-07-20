@@ -29,15 +29,15 @@ const whatsappText = encodeURIComponent("Olá! Gostaria de agendar um horário n
 const whatsappUrl = `https://wa.me/${phone}?text=${whatsappText}`;
 
 const services = [
-  { name: "Barba", price: "R$ 25,00", duration: "45 min", description: "A partir de R$ 25,00" },
-  { name: "Corte Degradê", price: "R$ 30,00", duration: "45 min", description: "Corte moderno com transição suave" },
-  { name: "Corte Degradê Navalhado", price: "R$ 30,00", duration: "45 min", description: "Acabamento ultra rente com navalha" },
-  { name: "Corte Social", price: "R$ 30,00", duration: "45 min", description: "Corte clássico e elegante" },
-  { name: "Degradê + Barba", price: "R$ 45,00", duration: "60 min", description: "Combo completo de estilo" },
-  { name: "Pezinho", price: "R$ 10,00", duration: "15 min", description: "Apenas o contorno" },
-  { name: "Risquinho", price: "R$ 10,00", duration: "15 min", description: "Detalhe artístico no corte" },
-  { name: "Sobrancelha", price: "Consultar", duration: "15 min", description: "Design e limpeza" },
-  { name: "Social + Barba", price: "R$ 45,00", duration: "60 min", description: "O clássico completo" },
+  { name: "Barba", price: "R$ 25,00", duration: "45 min", description: "A partir de R$ 25,00", image: "/images/barba.jpg" },
+  { name: "Corte Degradê", price: "R$ 30,00", duration: "45 min", description: "Corte moderno com transição suave", image: "/images/corte.jpg" },
+  { name: "Corte Degradê Navalhado", price: "R$ 30,00", duration: "45 min", description: "Acabamento ultra rente com navalha", image: "/images/corte.jpg" },
+  { name: "Corte Social", price: "R$ 30,00", duration: "45 min", description: "Corte clássico e elegante", image: "/images/corte.jpg" },
+  { name: "Degradê + Barba", price: "R$ 45,00", duration: "60 min", description: "Combo completo de estilo", image: "/images/tratamento.jpg" },
+  { name: "Pezinho", price: "R$ 10,00", duration: "15 min", description: "Apenas o contorno", image: "/images/corte.jpg" },
+  { name: "Risquinho", price: "R$ 10,00", duration: "15 min", description: "Detalhe artístico no corte", image: "/images/corte.jpg" },
+  { name: "Sobrancelha", price: "Consultar", duration: "15 min", description: "Design e limpeza", image: "/images/tratamento.jpg" },
+  { name: "Social + Barba", price: "R$ 45,00", duration: "60 min", description: "O clássico completo", image: "/images/tratamento.jpg" },
 ];
 
 const testimonials = [
@@ -204,27 +204,37 @@ function Index() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <div key={service.name} className="group glass-card overflow-hidden rounded-3xl p-8 backdrop-blur-sm animate-reveal-up" style={{ animationDelay: `${services.indexOf(service) * 100}ms` }}>
-                <div className="mb-6 flex items-start justify-between">
-                  <div className="rounded-2xl bg-primary/10 p-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <Scissors size={24} />
-                  </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-primary">{service.price}</p>
-                    <p className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
-                      <Clock size={12} /> {service.duration}
-                    </p>
-                  </div>
+              <div key={service.name} className="group glass-card overflow-hidden rounded-3xl backdrop-blur-sm animate-reveal-up" style={{ animationDelay: `${services.indexOf(service) * 100}ms` }}>
+                <div className="relative h-48 w-full overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.name} 
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
                 </div>
-                <h3 className="mb-3 text-xl font-bold text-white">{service.name}</h3>
-                <p className="mb-8 text-sm text-muted-foreground">{service.description}</p>
-                <a 
-                  href={whatsappUrl} 
-                  target="_blank" 
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 py-3 text-sm font-bold text-white transition-all hover:bg-primary hover:text-primary-foreground"
-                >
-                  Agendar este serviço
-                </a>
+                <div className="p-8">
+                  <div className="mb-6 flex items-start justify-between">
+                    <div className="rounded-2xl bg-primary/10 p-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Scissors size={24} />
+                    </div>
+                    <div className="text-right">
+                      <p className="text-2xl font-bold text-primary">{service.price}</p>
+                      <p className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
+                        <Clock size={12} /> {service.duration}
+                      </p>
+                    </div>
+                  </div>
+                  <h3 className="mb-3 text-xl font-bold text-white">{service.name}</h3>
+                  <p className="mb-8 text-sm text-muted-foreground">{service.description}</p>
+                  <a 
+                    href={whatsappUrl} 
+                    target="_blank" 
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 py-3 text-sm font-bold text-white transition-all hover:bg-primary hover:text-primary-foreground"
+                  >
+                    Agendar este serviço
+                  </a>
+                </div>
               </div>
             ))}
           </div>
