@@ -17,11 +17,11 @@ import {
   Smartphone
 } from "lucide-react";
 import { useState } from "react";
-import heroImage from "@/assets/hero-sales.jpeg.asset.json";
-import logoImage from "@/assets/sales-logo.jpeg.asset.json";
-import avatarTiago from "@/assets/avatar-tiago.jpg";
-import avatarDenise from "@/assets/avatar-denise.jpg";
-import avatarMarcos from "@/assets/avatar-marcos.jpg";
+const heroImage = "/images/hero.jpg";
+const logoImage = "/images/logo.png";
+const avatarTiago = "/images/avatar-tiago.jpg";
+const avatarDenise = "/images/avatar-denise.jpg";
+const avatarMarcos = "/images/avatar-marcos.jpg";
 
 const phone = "5585988016749";
 const formattedPhone = "+55 85 98801‑6749";
@@ -110,7 +110,7 @@ function Index() {
 
       {/* Hero Section */}
       <section id="inicio" className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-1000" style={{ backgroundImage: `url(${heroImage.url})` }} />
+        <div className="absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-1000" style={{ backgroundImage: `url(${heroImage})` }} />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
         
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
