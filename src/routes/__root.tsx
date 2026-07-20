@@ -77,28 +77,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sales Barbearia Ancuri | Estilo e Tradição" },
+      { title: "Studio WL Barbeshop | Experiência Premium em Itaitinga" },
       {
         name: "description",
         content:
-          "Sales Barbearia Ancuri - Uma nova experiência para uma antiga tradição. Cortes, barba e tratamentos exclusivos em Itaitinga/CE.",
+          "Studio WL Barbeshop - Mais que um corte, é uma experiência. Barbearia premium em Itaitinga com profissionais especializados e atendimento exclusivo.",
       },
-      { name: "author", content: "Sales Barbearia Ancuri" },
-      { property: "og:title", content: "Sales Barbearia Ancuri | Estilo e Tradição" },
+      { name: "author", content: "Studio WL Barbeshop" },
+      { property: "og:title", content: "Studio WL Barbeshop | Experiência Premium em Itaitinga" },
       {
         property: "og:description",
         content:
-          "Sales Barbearia Ancuri - Uma nova experiência para uma antiga tradição. Cortes, barba e tratamentos exclusivos em Itaitinga/CE.",
+          "Studio WL Barbeshop - Mais que um corte, é uma experiência. Barbearia premium em Itaitinga com profissionais especializados e atendimento exclusivo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Sales Barbearia Ancuri | Estilo e Tradição" },
+      { name: "twitter:title", content: "Studio WL Barbeshop | Experiência Premium em Itaitinga" },
       {
         name: "twitter:description",
-        content: "Sales Barbearia Ancuri - Uma nova experiência para uma antiga tradição. Cortes, barba e tratamentos exclusivos em Itaitinga/CE.",
+        content: "Studio WL Barbeshop - Mais que um corte, é uma experiência. Barbearia premium em Itaitinga com profissionais especializados e atendimento exclusivo.",
       },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/01c2aedb-4755-4b13-be4a-b7379c49fea9" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/01c2aedb-4755-4b13-be4a-b7379c49fea9" },
+      { property: "og:image", content: "https://rapid-craft-landing.lovable.app/images/hero.jpg" },
+      { name: "twitter:image", content: "https://rapid-craft-landing.lovable.app/images/hero.jpg" },
     ],
     links: [
       {
