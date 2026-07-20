@@ -185,7 +185,7 @@ function Index() {
               <div className="absolute -inset-4 rounded-full bg-primary/10 blur-xl animate-pulse" />
               <div className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/30 via-primary/5 to-transparent p-1 shadow-[0_0_50px_rgba(212,175,55,0.2)] ring-1 ring-primary/40">
                 <img
-                  src={logoImage.url}
+                  src={logoImage}
                   alt="Sales Barbearia Ancuri"
                   className="size-64 rounded-full object-contain bg-background/80 p-6 md:size-80"
                 />
