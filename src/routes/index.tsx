@@ -17,7 +17,7 @@ import {
   Smartphone
 } from "lucide-react";
 import { useState } from "react";
-import heroAsset from "@/assets/heroo.jpeg.asset.json";
+import heroAsset from "@/assets/hero-sales-v3.jpeg.asset.json";
 const heroImage = heroAsset.url;
 const logoImage = "/images/logo.png";
 const avatarTiago = "/images/avatar-tiago.jpg";
