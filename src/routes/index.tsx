@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import heroImageNew from "@/assets/hero-sales-v2.jpeg.asset.json";
-const logoImage = "/images/logo.png";
+import logoImage from "@/assets/sales-logo-v2.jpeg.asset.json";
 const avatarTiago = "/images/avatar-tiago.jpg";
 const avatarDenise = "/images/avatar-denise.jpg";
 const avatarMarcos = "/images/avatar-marcos.jpg";
@@ -185,9 +185,9 @@ function Index() {
               <div className="absolute -inset-4 rounded-full bg-primary/10 blur-xl animate-pulse" />
               <div className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/30 via-primary/5 to-transparent p-1 shadow-[0_0_50px_rgba(212,175,55,0.2)] ring-1 ring-primary/40">
                 <img
-                  src={logoImage}
+                  src={logoImage.url}
                   alt="Sales Barbearia Ancuri"
-                  className="size-56 rounded-full object-contain bg-background/60 p-3 md:size-72"
+                  className="size-64 rounded-full object-contain bg-background/80 p-6 md:size-80"
                 />
 
               </div>
