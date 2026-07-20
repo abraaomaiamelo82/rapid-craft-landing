@@ -17,10 +17,8 @@ import {
   Smartphone
 } from "lucide-react";
 import { useState } from "react";
-import heroAsset from "@/assets/hero-sales-v3.jpeg.asset.json";
-const heroImage = heroAsset.url;
-import logoAsset from "@/assets/sales-logo-v3.jpeg.asset.json";
-const logoImage = logoAsset.url;
+import wl000Asset from "@/assets/wl000.webp.asset.json";
+const logoImage = wl000Asset.url;
 const avatarTiago = "/images/avatar-tiago.jpg";
 const avatarDenise = "/images/avatar-denise.jpg";
 const avatarMarcos = "/images/avatar-marcos.jpg";
@@ -112,7 +110,7 @@ function Index() {
 
       {/* Hero Section */}
       <section id="inicio" className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-1000" style={{ backgroundImage: `url(${heroImage})` }} />
+        <div className="absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-1000" style={{ backgroundImage: `url(${logoImage})` }} />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
         
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
@@ -185,11 +183,11 @@ function Index() {
           <div className="mb-16 flex flex-col items-center text-center">
             <div className="mb-10 relative">
               <div className="absolute -inset-4 rounded-full bg-primary/10 blur-xl animate-pulse" />
-              <div className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/30 via-primary/5 to-transparent p-1 shadow-[0_0_50px_rgba(212,175,55,0.2)] ring-1 ring-primary/40">
+              <div className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-br from-white/20 via-white/5 to-transparent p-1 shadow-[0_0_50px_rgba(255,255,255,0.1)] ring-1 ring-white/20">
                 <img
                   src={logoImage}
                   alt="Sales Barbearia Ancuri"
-                  className="size-64 rounded-full object-contain bg-[#1a1a1a] p-4 md:size-80"
+                  className="size-64 rounded-full object-contain bg-black p-4 md:size-80"
                 />
 
 
