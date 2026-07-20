@@ -19,7 +19,8 @@ import {
 import { useState } from "react";
 import heroAsset from "@/assets/hero-sales-v3.jpeg.asset.json";
 const heroImage = heroAsset.url;
-const logoImage = "/images/logo.png";
+import logoAsset from "@/assets/sales-logo-v3.jpeg.asset.json";
+const logoImage = logoAsset.url;
 const avatarTiago = "/images/avatar-tiago.jpg";
 const avatarDenise = "/images/avatar-denise.jpg";
 const avatarMarcos = "/images/avatar-marcos.jpg";
@@ -188,8 +189,9 @@ function Index() {
                 <img
                   src={logoImage}
                   alt="Sales Barbearia Ancuri"
-                  className="size-64 rounded-full object-contain bg-background/80 p-6 md:size-80"
+                  className="size-64 rounded-full object-contain bg-[#1a1a1a] p-4 md:size-80"
                 />
+
 
               </div>
               <div className="mt-6">
