@@ -57,6 +57,13 @@ const testimonials = [
   { name: "Marcos Oliveira", rating: 5, text: "Excelente atendimento e técnica impecável. O degradê ficou perfeito e a barba impecável. Recomendo fortemente.", date: "1 mês atrás", avatar: avatarMarcos, role: "Cliente novo" },
 ];
 
+const clientReviews = [
+  { name: "Rafael Costa", role: "Cliente há 6 meses", date: "2 semanas atrás", text: "Cortei com o Marcos e fiquei impressionado com a atenção aos detalhes. Ambiente super organizado e cheiroso. Já virei cliente fixo!" },
+  { name: "Juliana Mendes", role: "Mãe de cliente", date: "1 mês atrás", text: "Trago meu filho toda semana e ele já pede pra vir sozinho de tão bem que é tratado. Equipe paciente e capricho no acabamento." },
+  { name: "Eduardo Farias", role: "Cliente frequente", date: "4 dias atrás", text: "Melhor barba da região, sem dúvida. Toalha quente, navalha bem afiada e um cheiro de barbearia raiz que eu amo." },
+  { name: "Bruno Teixeira", role: "Cliente novo", date: "3 semanas atrás", text: "Cheguei sem hora marcada e fui super bem atendido. O corte ficou exatamente como eu queria, e olha que sou exigente 😅" },
+];
+
 export const Route = createFileRoute("/")({
   component: Index,
 });
@@ -472,6 +479,49 @@ function Index() {
       >
         <MessageSquare size={32} />
       </a>
+
+      {/* Client Reviews - antes do rodapé */}
+      <section id="depoimentos-clientes" className="py-24 border-t border-white/[0.03]">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.3em] text-primary/80">Depoimentos verificados</p>
+            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">O que dizem nossos <span className="text-gradient-gold">clientes</span></h2>
+          </div>
+
+          <div className="-mx-4 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-4 pb-6 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {clientReviews.map((r, idx) => (
+              <article
+                key={r.name}
+                className="flex min-w-[85%] shrink-0 snap-center flex-col rounded-3xl border border-white/5 bg-card/40 p-8 text-left backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-primary/25 hover:bg-card/60 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] animate-reveal-up md:min-w-0"
+                style={{ animationDelay: `${idx * 120}ms` }}
+              >
+                <div className="mb-5 flex items-center justify-between">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={16} className="fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    Google
+                  </div>
+                </div>
+                <p className="mb-8 flex-1 italic leading-relaxed text-muted-foreground">"{r.text}"</p>
+                <div className="flex items-center gap-4 border-t border-white/5 pt-6">
+                  <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary/30 to-primary/10 font-heading text-lg font-bold text-primary ring-2 ring-primary/20">
+                    {r.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate font-bold text-white">{r.name}</p>
+                    <p className="text-[11px] uppercase tracking-wider text-primary/80">{r.role}</p>
+                    <p className="text-xs text-muted-foreground">{r.date}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="relative bg-background pt-32 pb-20 overflow-hidden">
