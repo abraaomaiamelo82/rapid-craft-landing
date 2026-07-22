@@ -119,40 +119,93 @@ function Index() {
 
       {/* Hero Section */}
       <section id="inicio" className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-1000" style={{ backgroundImage: `url(${heroImage})` }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
-        
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <span className="mb-4 inline-block rounded-full bg-primary/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">
-            A melhor experiência de Itaitinga
-          </span>
-          <h2 className="mb-6 font-heading text-5xl font-extrabold leading-tight text-white md:text-7xl animate-reveal-up">
-            Uma nova experiência para uma <span className="italic text-gradient-gold">antiga tradição</span>.
+        {/* Layered background */}
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-105 animate-[heroZoom_20s_ease-in-out_infinite_alternate]"
+          style={{ backgroundImage: `url(${heroImage})`, opacity: 0.55 }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--background)_85%)]" />
+
+        {/* Ambient gold glow */}
+        <div className="pointer-events-none absolute -top-32 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px] animate-pulse" />
+        <div className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-primary/5 blur-[100px]" />
+
+        {/* Corner ornaments */}
+        <div className="pointer-events-none absolute left-8 top-28 hidden h-px w-32 bg-gradient-to-r from-transparent via-primary/40 to-transparent md:block" />
+        <div className="pointer-events-none absolute right-8 bottom-32 hidden h-px w-32 bg-gradient-to-r from-transparent via-primary/40 to-transparent md:block" />
+
+        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+          {/* Eyebrow */}
+          <div className="mb-10 flex items-center justify-center gap-4 opacity-0 animate-fade-in [animation-delay:100ms] [animation-fill-mode:forwards]">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+            <span className="inline-block rounded-full border border-primary/20 bg-primary/[0.04] px-6 py-2 text-[10px] font-bold uppercase tracking-[0.4em] text-primary backdrop-blur-md">
+              Desde 2015 · Itaitinga
+            </span>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+          </div>
+
+          {/* Headline */}
+          <h2 className="mb-8 font-heading text-6xl font-extrabold leading-[1.05] tracking-tighter text-white md:text-8xl">
+            <span className="block opacity-0 animate-reveal-up [animation-delay:200ms] [animation-fill-mode:forwards]">
+              Tradição lapidada
+            </span>
+            <span className="block opacity-0 animate-reveal-up [animation-delay:400ms] [animation-fill-mode:forwards]">
+              pela <span className="italic text-gradient-gold relative">
+                modernidade
+                <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+              </span>.
+            </span>
           </h2>
-          <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground md:text-xl animate-reveal-up [animation-delay:200ms] text-balance">
-            Excelência no atendimento, precisão no corte e o estilo que você merece em um ambiente exclusivo e sofisticado.
+
+          <p className="mx-auto mb-14 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl text-balance opacity-0 animate-reveal-up [animation-delay:600ms] [animation-fill-mode:forwards]">
+            Elevamos o conceito de barbearia a uma experiência sensorial completa, onde cada detalhe é projetado para o homem que não abre mão da excelência.
           </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row animate-reveal-up [animation-delay:400ms]">
-            <a 
-              href={whatsappUrl} 
-              target="_blank" 
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-10 py-5 text-lg font-bold text-primary-foreground shadow-2xl shadow-primary/40 transition-all hover:scale-105 sm:w-auto"
+
+          {/* CTA cluster */}
+          <div className="flex flex-col items-center justify-center gap-8 opacity-0 animate-reveal-up [animation-delay:800ms] [animation-fill-mode:forwards] md:flex-row md:gap-12">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-4 overflow-hidden rounded-full bg-primary px-10 py-5 text-[13px] font-bold uppercase tracking-[0.25em] text-primary-foreground shadow-[0_20px_60px_-15px_oklch(0.82_0.08_85_/_0.55)] transition-all duration-500 hover:shadow-[0_25px_70px_-10px_oklch(0.82_0.08_85_/_0.7)] hover:scale-[1.02] active:scale-[0.98]"
             >
-              <CalendarDays size={24} />
-              Agendar agora
+              {/* Shimmer */}
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
+              <CalendarDays size={18} className="relative z-10 transition-transform duration-500 group-hover:rotate-[-8deg]" />
+              <span className="relative z-10">Agendar Horário</span>
+              <span className="relative z-10 flex size-6 items-center justify-center rounded-full bg-primary-foreground/10 transition-all duration-500 group-hover:bg-primary-foreground/20 group-hover:translate-x-1">
+                <span className="text-sm">→</span>
+              </span>
             </a>
-            <div className="flex items-center gap-8 border-l border-white/10 pl-8 hidden md:flex">
-              <div>
-                <p className="text-2xl font-bold text-white">4.9</p>
-                <p className="text-xs text-muted-foreground uppercase">Avaliação Google</p>
+
+            <div className="hidden items-center gap-10 border-l border-white/[0.06] pl-12 md:flex">
+              <div className="text-left">
+                <div className="mb-1 flex items-center gap-1">
+                  <p className="font-heading text-3xl font-bold text-white leading-none">4.9</p>
+                  <Star size={14} className="fill-primary text-primary" />
+                </div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Google Reviews</p>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-white">+5k</p>
-                <p className="text-xs text-muted-foreground uppercase">Atendimentos</p>
+              <div className="h-10 w-px bg-white/[0.06]" />
+              <div className="text-left">
+                <p className="mb-1 font-heading text-3xl font-bold text-white leading-none">+5k</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Clientes</p>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in [animation-delay:1200ms] [animation-fill-mode:forwards]">
+          <div className="flex flex-col items-center gap-3">
+            <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60">Explore</span>
+            <div className="relative h-12 w-[1px] overflow-hidden bg-white/[0.06]">
+              <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-primary to-transparent animate-[scrollLine_2s_ease-in-out_infinite]" />
+            </div>
+          </div>
+        </div>
+      </section>
       </section>
 
       {/* Amenities Section */}
