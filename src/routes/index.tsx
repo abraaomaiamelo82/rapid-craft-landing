@@ -214,6 +214,21 @@ function Index() {
         </div>
       </section>
 
+      {/* Signature Logo Section */}
+      <section className="relative overflow-hidden bg-background py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="group relative overflow-hidden rounded-[2.5rem] border border-white/[0.03] bg-white/[0.01] p-4 transition-all duration-700 hover:border-primary/20">
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+            <img 
+              src={iiiAsset.url} 
+              alt="Sales Barbearia Signature" 
+              className="aspect-[21/9] w-full rounded-[2rem] object-cover object-center transition-transform duration-[2s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/[0.05]" />
+          </div>
+        </div>
+      </section>
+
       {/* Amenities Section */}
       <section className="bg-background py-32 border-b border-white/[0.03]">
         <div className="mx-auto max-w-7xl px-6">
