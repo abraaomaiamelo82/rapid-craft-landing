@@ -82,7 +82,7 @@ function Index() {
     <div className="flex min-h-screen flex-col bg-background font-sans text-foreground selection:bg-primary selection:text-primary-foreground">
       {/* Header */}
       <header className="fixed top-0 z-50 w-full bg-background/60 backdrop-blur-2xl transition-all duration-500 border-b border-white/[0.03]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-4">
             <div className="flex flex-col">
               <h1 className="font-heading text-xl font-bold tracking-tighter text-white md:text-2xl">
@@ -160,7 +160,7 @@ function Index() {
           </div>
 
           {/* Headline */}
-          <h2 className="mb-8 font-heading text-6xl font-extrabold leading-[1.05] tracking-tighter text-white md:text-8xl">
+          <h2 className="mb-6 font-heading text-5xl font-extrabold leading-[1.1] tracking-tighter text-white md:text-7xl">
             <span className="block opacity-0 animate-reveal-up [animation-delay:200ms] [animation-fill-mode:forwards]">
               Tradição lapidada
             </span>
@@ -171,8 +171,8 @@ function Index() {
               </span>.
             </span>
           </h2>
-
-          <p className="mx-auto mb-14 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl text-balance opacity-0 animate-reveal-up [animation-delay:600ms] [animation-fill-mode:forwards]">
+ 
+          <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg text-balance opacity-0 animate-reveal-up [animation-delay:600ms] [animation-fill-mode:forwards]">
             Elevamos o conceito de barbearia a uma experiência sensorial completa, onde cada detalhe é projetado para o homem que não abre mão da excelência.
           </p>
 
@@ -533,15 +533,15 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="relative bg-background pt-32 pb-20 overflow-hidden">
+      <footer className="relative bg-background pt-20 pb-16 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-20 lg:grid-cols-2">
+          <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="font-heading text-5xl font-bold text-white mb-8">
+              <h2 className="font-heading text-4xl font-bold text-white mb-6">
                 Pronto para uma nova <span className="italic text-gradient-gold">perspectiva</span>?
               </h2>
-              <p className="text-muted-foreground text-lg mb-12 max-w-md leading-relaxed">
+              <p className="text-muted-foreground text-sm mb-8 max-w-md leading-relaxed">
                 Junte-se à nossa comunidade de clientes que valorizam a estética e o bem-estar. O seu próximo grande corte começa aqui.
               </p>
               
