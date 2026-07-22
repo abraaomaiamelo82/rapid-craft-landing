@@ -120,7 +120,7 @@ function Index() {
             A melhor experiência de Itaitinga
           </span>
           <h2 className="mb-6 font-heading text-5xl font-extrabold leading-tight text-white md:text-7xl animate-reveal-up">
-            Uma nova experiência para uma <span className="italic text-primary">antiga tradição</span>.
+            Uma nova experiência para uma <span className="italic text-gradient-gold">antiga tradição</span>.
           </h2>
           <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground md:text-xl animate-reveal-up [animation-delay:200ms] text-balance">
             Excelência no atendimento, precisão no corte e o estilo que você merece em um ambiente exclusivo e sofisticado.
@@ -185,11 +185,11 @@ function Index() {
           <div className="mb-16 flex flex-col items-center text-center">
             <div className="mb-10 relative">
               <div className="absolute -inset-4 rounded-full bg-primary/10 blur-xl animate-pulse" />
-              <div className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/30 via-primary/5 to-transparent p-1 shadow-[0_0_50px_rgba(212,175,55,0.2)] ring-1 ring-primary/40">
+              <div className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent p-1 shadow-[0_0_60px_rgba(199,165,100,0.15)] ring-1 ring-primary/30">
                 <img
                   src={logoImage}
                   alt="Sales Barbearia Ancuri"
-                  className="size-64 rounded-full object-contain bg-[#1a1a1a] p-4 md:size-80"
+                  className="size-64 rounded-full object-contain bg-secondary p-6 md:size-80"
                 />
 
 
@@ -200,7 +200,7 @@ function Index() {
                 </span>
               </div>
             </div>
-            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossos <span className="italic text-primary">Serviços</span></h2>
+            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossos <span className="italic text-gradient-gold">Serviços</span></h2>
             <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-primary" />
             <p className="mt-6 max-w-md text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
           </div>
@@ -218,7 +218,7 @@ function Index() {
                 </div>
                 <div className="p-8">
                   <div className="mb-6 flex items-start justify-between">
-                    <div className="rounded-2xl bg-primary/10 p-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <div className="rounded-2xl bg-primary/20 p-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                       <Scissors size={24} />
                     </div>
                     <div className="text-right">
@@ -249,7 +249,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <h2 className="mb-8 font-heading text-4xl font-bold text-white">Onde nos <span className="text-primary">encontrar</span></h2>
+              <h2 className="mb-8 font-heading text-4xl font-bold text-white">Onde nos <span className="text-gradient-gold">encontrar</span></h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="rounded-xl bg-primary/10 p-3 text-primary">
@@ -318,7 +318,7 @@ function Index() {
       {/* Testimonials */}
       <section id="avaliacoes" className="py-24">
         <div className="mx-auto max-w-7xl px-4 text-center">
-          <h2 className="mb-16 font-heading text-4xl font-bold text-white">O que dizem nossos <span className="text-primary">clientes</span></h2>
+          <h2 className="mb-16 font-heading text-4xl font-bold text-white">O que dizem nossos <span className="text-gradient-gold">clientes</span></h2>
           
           <div className="grid gap-8 md:grid-cols-3">
             {testimonials.map((t) => (
