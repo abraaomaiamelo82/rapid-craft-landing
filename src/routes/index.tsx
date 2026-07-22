@@ -365,61 +365,66 @@ function Index() {
       </a>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 bg-background py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid gap-12 lg:grid-cols-4">
-            <div className="lg:col-span-1">
-              <h2 className="font-heading text-2xl font-bold text-white mb-4">
-                SALES BARBEARIA <span className="text-primary">ANCURI</span>
+      <footer className="relative bg-background pt-32 pb-20 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-20 lg:grid-cols-2">
+            <div>
+              <h2 className="font-heading text-5xl font-bold text-white mb-8">
+                Pronto para uma nova <span className="italic text-gradient-gold">perspectiva</span>?
               </h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Elevando o padrão de barbearia no Ancuri. Cortes modernos, ambiente sofisticado e tradição em cada detalhe.
+              <p className="text-muted-foreground text-lg mb-12 max-w-md leading-relaxed">
+                Junte-se à nossa comunidade de clientes que valorizam a estética e o bem-estar. O seu próximo grande corte começa aqui.
               </p>
-              <div className="mt-8 flex gap-4">
-                <a href="#" className="rounded-full bg-white/5 p-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"><Instagram size={20} /></a>
-                <a href="#" className="rounded-full bg-white/5 p-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"><Facebook size={20} /></a>
-                <a href={whatsappUrl} className="rounded-full bg-white/5 p-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"><MessageSquare size={20} /></a>
+              
+              <div className="space-y-6">
+                <div className="flex items-center gap-6">
+                  <div className="size-14 flex items-center justify-center rounded-2xl bg-white/[0.03] text-primary">
+                    <Phone size={24} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Contato Direto</p>
+                    <p className="text-xl font-bold text-white">{formattedPhone}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="size-14 flex items-center justify-center rounded-2xl bg-white/[0.03] text-primary">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Localização</p>
+                    <p className="text-white">Rua Francisco de Assis de Oliveira, 240, Itaitinga, CE</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 lg:col-span-2">
-              <div>
-                <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Acesso Rápido</h4>
-                <ul className="space-y-4 text-sm text-muted-foreground">
-                  <li><a href="#inicio" className="transition-colors hover:text-primary">Início</a></li>
-                  <li><a href="#servicos" className="transition-colors hover:text-primary">Serviços</a></li>
-                  <li><a href="#avaliacoes" className="transition-colors hover:text-primary">Avaliações</a></li>
-                  <li><a href={whatsappUrl} className="transition-colors hover:text-primary">Agendar Horário</a></li>
-                </ul>
+            <div className="flex flex-col justify-end lg:items-end">
+              <div className="mb-10 text-left lg:text-right">
+                <p className="text-muted-foreground mb-4 opacity-40 font-medium">Fale conosco agora</p>
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank" 
+                  className="group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full bg-primary px-16 py-7 text-[15px] font-bold uppercase tracking-[0.2em] text-primary-foreground shadow-[0_20px_40px_rgba(199,165,100,0.3)] transition-all hover:scale-105 active:scale-95"
+                >
+                  <div className="absolute inset-0 bg-white/20 transition-transform duration-500 -translate-x-full group-hover:translate-x-0" />
+                  <MessageSquare size={20} className="relative z-10" />
+                  <span className="relative z-10">Agendar via WhatsApp</span>
+                </a>
               </div>
-              <div>
-                <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Informações</h4>
-                <ul className="space-y-4 text-sm text-muted-foreground">
-                  <li><a href="#localizacao" className="transition-colors hover:text-primary">Localização</a></li>
-                  <li><a href="#" className="transition-colors hover:text-primary">Favoritos</a></li>
-                  <li><a href="#" className="transition-colors hover:text-primary">Meus Agendamentos</a></li>
-                </ul>
+              <div className="flex gap-8">
+                {["Instagram", "Facebook", "Google Reviews"].map((social) => (
+                  <a key={social} href="#" className="text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-primary">{social}</a>
+                ))}
               </div>
-            </div>
-
-            <div className="lg:col-span-1">
-              <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Fale Conosco</h4>
-              <p className="mb-2 text-sm text-muted-foreground font-medium">{formattedPhone}</p>
-              <a 
-                href={whatsappUrl} 
-                target="_blank" 
-                className="inline-block rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-transform hover:scale-105"
-              >
-                Chamar no WhatsApp
-              </a>
             </div>
           </div>
           
-          <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-xs text-muted-foreground md:flex-row">
-            <p>© {new Date().getFullYear()} Sales Barbearia Ancuri. Todos os direitos reservados.</p>
-            <div className="flex gap-8">
-              <a href="#" className="hover:text-primary">Termos de Uso</a>
-              <a href="#" className="hover:text-primary">Privacidade</a>
+          <div className="mt-32 pt-10 border-t border-white/[0.03] flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40">© {new Date().getFullYear()} Sales Barbearia Ancuri. Todos os direitos reservados.</p>
+            <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40">
+              <a href="#" className="hover:text-primary transition-colors">Privacidade</a>
+              <a href="#" className="hover:text-primary transition-colors">Termos</a>
             </div>
           </div>
         </div>
