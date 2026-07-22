@@ -304,7 +304,40 @@ function Index() {
         </div>
       </section>
 
-      {/* Location Section */}
+      {/* Gallery Section */}
+      <section id="galeria" className="py-24 border-t border-white/[0.03]">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-14 text-center">
+            <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">Nossos trabalhos</span>
+            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">
+              Galeria <span className="text-gradient-gold">Sales</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-white/60">Alguns cortes feitos aqui dentro da barbearia.</p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {galleryImages.map((img) => (
+              <div
+                key={img.src}
+                className="group relative overflow-hidden rounded-3xl border border-white/[0.06] bg-secondary/20 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.9)]"
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  className="h-[520px] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-80" />
+                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
+                  <span className="text-sm font-medium text-white/90">{img.alt}</span>
+                  <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary">Sales</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <section id="localizacao" className="bg-secondary/20 py-24">
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
