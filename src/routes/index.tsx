@@ -222,36 +222,34 @@ function Index() {
       </section>
 
       {/* Signature Logo Section */}
-      <section className="relative overflow-hidden bg-background py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="group relative overflow-hidden rounded-[2.5rem] border border-white/[0.03] bg-white/[0.01] p-4 transition-all duration-700 hover:border-primary/20">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+      <section className="relative overflow-hidden bg-background py-10">
+        <div className="mx-auto max-w-2xl px-6">
+          <div className="group relative overflow-hidden rounded-3xl border border-white/[0.03] bg-white/[0.01] p-2 transition-all duration-700 hover:border-primary/20">
             <img 
               src={iiiAsset.url} 
               alt="Sales Barbearia Signature" 
-              className="aspect-[21/9] w-full rounded-[2rem] object-cover object-center transition-transform duration-[2s] group-hover:scale-105"
+              className="aspect-[21/7] w-full rounded-2xl object-cover object-center transition-transform duration-[2s] group-hover:scale-105"
             />
-            <div className="absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/[0.05]" />
           </div>
         </div>
       </section>
 
       {/* Amenities Section */}
-      <section className="bg-background py-32 border-b border-white/[0.03]">
+      <section className="bg-background py-16 border-b border-white/[0.03]">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {amenities.map((item, idx) => (
               <div 
                 key={item.label} 
-                className="group flex flex-col items-center justify-center space-y-5 rounded-[2.5rem] border border-white/[0.03] bg-white/[0.01] p-12 text-center transition-all duration-700 hover:bg-white/[0.03] hover:border-primary/20 hover:-translate-y-2"
+                className="group flex flex-col items-center justify-center space-y-3 rounded-2xl border border-white/[0.03] bg-white/[0.01] p-6 text-center transition-all duration-700 hover:bg-white/[0.03] hover:border-primary/20"
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <div className="mb-2 text-primary transition-all duration-500 group-hover:scale-125 group-hover:rotate-6 group-hover:drop-shadow-[0_0_15px_rgba(199,165,100,0.4)]">
-                  <item.icon size={32} strokeWidth={1.5} />
+                <div className="text-primary transition-all duration-500 group-hover:scale-110">
+                  <item.icon size={24} strokeWidth={1.5} />
                 </div>
-                <div className="space-y-1">
-                  <p className="font-heading text-xl font-bold text-white tracking-tight">{item.label}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground opacity-50 transition-opacity group-hover:opacity-100">
+                <div className="space-y-0.5">
+                  <p className="font-heading text-lg font-bold text-white tracking-tight">{item.label}</p>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.1em] text-muted-foreground opacity-50">
                     {item.description}
                   </p>
                 </div>
@@ -262,61 +260,54 @@ function Index() {
       </section>
 
       {/* Services Section */}
-      <section id="servicos" className="py-24">
+      <section id="servicos" className="py-20">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-16 flex flex-col items-center text-center">
-            <div className="mb-10 relative">
-              <div className="absolute -inset-4 rounded-full bg-primary/10 blur-xl animate-pulse" />
-              <div className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent p-1 shadow-[0_0_60px_rgba(199,165,100,0.15)] ring-1 ring-primary/30">
+          <div className="mb-12 flex flex-col items-center text-center">
+            <div className="mb-6 relative">
+              <div className="absolute -inset-2 rounded-full bg-primary/10 blur-xl animate-pulse" />
+              <div className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent p-1 shadow-[0_0_40px_rgba(199,165,100,0.15)] ring-1 ring-primary/30">
                 <img
                   src={logoImage}
                   alt="Sales Barbearia Ancuri"
-                  className="size-64 rounded-full object-contain bg-secondary p-6 md:size-80"
+                  className="size-48 rounded-full object-contain bg-secondary p-4 md:size-56"
                 />
-
-
-              </div>
-              <div className="mt-6">
-                <span className="inline-block rounded-full bg-primary/10 px-6 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-primary border border-primary/20 backdrop-blur-sm">
-                  Nossa Casa
-                </span>
               </div>
             </div>
-            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossos <span className="italic text-gradient-gold">Serviços</span></h2>
-            <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-primary" />
-            <p className="mt-6 max-w-md text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
+            <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">Nossos <span className="italic text-gradient-gold">Serviços</span></h2>
+            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-primary" />
+            <p className="mt-4 max-w-md text-sm text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <div 
                 key={service.name} 
-                className="group glass-card overflow-hidden rounded-[2rem] backdrop-blur-sm animate-reveal-up" 
+                className="group glass-card overflow-hidden rounded-2xl backdrop-blur-sm animate-reveal-up" 
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="relative h-64 w-full overflow-hidden">
+                <div className="relative h-48 w-full overflow-hidden">
                   <img 
                     src={service.image} 
                     alt={service.name} 
-                    className="h-full w-full object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:rotate-1"
+                    className="h-full w-full object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
-                  <div className="absolute bottom-6 left-8">
-                    <span className="rounded-full bg-primary/20 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary backdrop-blur-md">
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-6">
+                    <span className="rounded-full bg-primary/20 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-primary backdrop-blur-md">
                       {service.duration}
                     </span>
                   </div>
                 </div>
-                <div className="p-10">
-                  <div className="mb-8 flex items-center justify-between">
-                    <h3 className="font-heading text-2xl font-bold text-white">{service.name}</h3>
-                    <p className="text-2xl font-bold text-primary tracking-tighter">{service.price}</p>
+                <div className="p-6">
+                  <div className="mb-4 flex items-center justify-between">
+                    <h3 className="font-heading text-xl font-bold text-white">{service.name}</h3>
+                    <p className="text-xl font-bold text-primary tracking-tighter">{service.price}</p>
                   </div>
-                  <p className="mb-10 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
+                  <p className="mb-6 text-xs leading-relaxed text-muted-foreground">{service.description}</p>
                   <a 
                     href={whatsappUrl} 
                     target="_blank" 
-                    className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] py-5 text-[13px] font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-primary hover:text-primary-foreground hover:border-transparent active:scale-95"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/[0.03] py-3.5 text-[12px] font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-primary hover:text-primary-foreground hover:border-transparent active:scale-95"
                   >
                     Reservar agora
                   </a>
@@ -328,31 +319,29 @@ function Index() {
       </section>
 
       {/* Gallery Section */}
-      <section id="galeria" className="py-24 border-t border-white/[0.03]">
+      <section id="galeria" className="py-20 border-t border-white/[0.03]">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-14 text-center">
-            <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">Nossos trabalhos</span>
-            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">
+          <div className="mb-10 text-center">
+            <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">
               Galeria <span className="text-gradient-gold">Sales</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-white/60">Alguns cortes feitos aqui dentro da barbearia.</p>
+            <p className="mx-auto mt-2 max-w-xl text-xs text-white/60">Alguns cortes feitos aqui dentro da barbearia.</p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             {galleryImages.map((img) => (
               <div
                 key={img.src}
-                className="group relative overflow-hidden rounded-3xl border border-white/[0.06] bg-secondary/20 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.9)]"
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-secondary/20"
               >
                 <img
                   src={img.src}
                   alt={img.alt}
                   loading="lazy"
-                  className="h-[520px] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                  className="h-[400px] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-80" />
-                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
-                  <span className="text-sm font-medium text-white/90">{img.alt}</span>
-                  <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary">Sales</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <span className="text-xs font-medium text-white/90">{img.alt}</span>
                 </div>
               </div>
             ))}
@@ -362,15 +351,14 @@ function Index() {
 
 
       {/* Localização e Horários */}
-      <section id="localizacao" className="py-24 bg-background relative overflow-hidden">
+      <section id="localizacao" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             {/* Bloco de Informações */}
-            <div className="space-y-10 animate-reveal-up">
+            <div className="space-y-8 animate-reveal-up">
               <div>
-                <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.3em] text-primary/80">Onde estamos</p>
-                <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossa <span className="text-gradient-gold italic">Localização</span></h2>
-                <div className="mt-4 h-1 w-20 rounded-full bg-primary" />
+                <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">Nossa <span className="text-gradient-gold italic">Localização</span></h2>
+                <div className="mt-3 h-1 w-16 rounded-full bg-primary" />
               </div>
 
               <div className="space-y-8">
@@ -454,11 +442,11 @@ function Index() {
       </section>
 
       {/* Testimonials */}
-      <section id="avaliacoes" className="py-24">
+      <section id="avaliacoes" className="py-20 border-t border-white/[0.03]">
         <div className="mx-auto max-w-7xl px-4 text-center">
-          <h2 className="mb-16 font-heading text-4xl font-bold text-white">O que dizem nossos <span className="text-gradient-gold">clientes</span></h2>
+          <h2 className="mb-12 font-heading text-3xl font-bold text-white">O que dizem nossos <span className="text-gradient-gold">clientes</span></h2>
           
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {testimonials.map((t) => (
               <div key={t.name} className="flex flex-col rounded-3xl border border-white/5 bg-card/40 p-8 text-left transition-all duration-300 hover:bg-card/60 hover:border-primary/20 animate-reveal-up" style={{ animationDelay: `${testimonials.indexOf(t) * 150}ms` }}>
                 <div className="mb-4 flex gap-1">
@@ -503,18 +491,17 @@ function Index() {
       </a>
 
       {/* Client Reviews - antes do rodapé */}
-      <section id="depoimentos-clientes" className="py-24 border-t border-white/[0.03]">
+      <section id="depoimentos-clientes" className="py-20 border-t border-white/[0.03]">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-14 text-center">
-            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.3em] text-primary/80">Depoimentos verificados</p>
-            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">O que dizem nossos <span className="text-gradient-gold">clientes</span></h2>
+          <div className="mb-10 text-center">
+            <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">Depoimentos <span className="text-gradient-gold">Verificados</span></h2>
           </div>
-
-          <div className="-mx-4 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-4 pb-6 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {clientReviews.map((r, idx) => (
               <article
                 key={r.name}
-                className="flex min-w-[85%] shrink-0 snap-center flex-col rounded-3xl border border-white/5 bg-card/40 p-8 text-left backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-primary/25 hover:bg-card/60 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] animate-reveal-up md:min-w-0"
+                className="flex flex-col rounded-2xl border border-white/5 bg-card/40 p-6 text-left backdrop-blur-xl transition-all duration-500 hover:border-primary/25 hover:bg-card/60 animate-reveal-up"
                 style={{ animationDelay: `${idx * 120}ms` }}
               >
                 <div className="mb-5 flex items-center justify-between">
