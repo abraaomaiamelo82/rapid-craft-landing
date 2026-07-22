@@ -14,9 +14,11 @@ import {
   Clock,
   CreditCard,
   Wallet,
-  Smartphone
+  Smartphone,
+  Phone,
+  Quote
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import heroAsset from "@/assets/hero-sales-v3.jpeg.asset.json";
 const heroImage = heroAsset.url;
 import logoAsset from "@/assets/sales-logo-v3.jpeg.asset.json";
