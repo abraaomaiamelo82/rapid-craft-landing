@@ -1,18 +1,27 @@
 :root {
-  --background: oklch(0.08 0.01 270);
-  --foreground: oklch(0.98 0.01 270);
-  --primary: oklch(0.72 0.16 75);
-  --primary-foreground: oklch(0.1 0.01 270);
-  --secondary: oklch(0.12 0.02 270);
-  --secondary-foreground: oklch(0.95 0.01 270);
-  --card: oklch(0.1 0.01 270);
-  --card-foreground: oklch(0.95 0.01 270);
-  --border: oklch(0.18 0.02 270);
-  --accent: oklch(0.25 0.03 270);
-  --accent-foreground: oklch(0.95 0.01 270);
-  --muted: oklch(0.15 0.01 270);
-  --muted-foreground: oklch(0.65 0.02 270);
-  --ring: oklch(0.72 0.16 75);
+  /* Premium Obsidian & Gold Palette */
+  --background: oklch(0.06 0.01 45);
+  --foreground: oklch(0.95 0.01 45);
+  
+  /* Primary Gold - Refined Champagne */
+  --primary: oklch(0.78 0.12 85);
+  --primary-foreground: oklch(0.1 0.02 45);
+  
+  /* Surfaces - Layered Dark */
+  --secondary: oklch(0.12 0.02 45);
+  --secondary-foreground: oklch(0.9 0.01 45);
+  
+  --card: oklch(0.1 0.015 45);
+  --card-foreground: oklch(0.9 0.01 45);
+  
+  --muted: oklch(0.18 0.01 45);
+  --muted-foreground: oklch(0.65 0.02 45);
+  
+  --accent: oklch(0.25 0.03 45);
+  --accent-foreground: oklch(0.95 0.01 45);
+  
+  --border: oklch(0.16 0.01 45);
+  --ring: oklch(0.78 0.12 85);
 }
 
 @import "tailwindcss" source(none);
@@ -58,8 +67,8 @@
   }
 
   @keyframes glow {
-    from { box-shadow: 0 0 5px oklch(0.72 0.16 75 / 0.2); }
-    to { box-shadow: 0 0 20px oklch(0.72 0.16 75 / 0.4); }
+    from { box-shadow: 0 0 5px oklch(0.78 0.12 85 / 0.15); }
+    to { box-shadow: 0 0 25px oklch(0.78 0.12 85 / 0.35); }
   }
 }
 
@@ -80,9 +89,9 @@
     text-wrap: balance;
   }
   .glass {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08];
+    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05];
   }
   .glass-card {
-    @apply bg-card/40 backdrop-blur-md border border-white/[0.05] transition-all duration-300 hover:border-primary/20 hover:bg-card/60;
+    @apply bg-card/30 backdrop-blur-xl border border-white/[0.03] transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)];
   }
 }
