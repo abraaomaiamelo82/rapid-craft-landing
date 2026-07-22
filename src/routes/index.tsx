@@ -100,12 +100,12 @@ function Index() {
             </div>
           </div>
 
-          <nav className="hidden items-center gap-10 lg:flex">
+          <nav className="hidden items-center gap-8 lg:flex">
             {["inicio", "servicos", "profissionais", "avaliacoes"].map((item) => (
               <a 
                 key={item}
                 href={`#${item}`} 
-                className="text-[13px] font-bold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-primary hover:tracking-[0.25em]"
+                className="text-[12px] font-bold uppercase tracking-[0.15em] text-muted-foreground transition-all hover:text-primary hover:tracking-[0.2em]"
               >
                 {item === 'inicio' ? 'Início' : item === 'servicos' ? 'Serviços' : item === 'avaliacoes' ? 'Avaliações' : 'Profissionais'}
               </a>
@@ -177,12 +177,12 @@ function Index() {
           </p>
 
           {/* CTA cluster */}
-          <div className="flex flex-col items-center justify-center gap-8 opacity-0 animate-reveal-up [animation-delay:800ms] [animation-fill-mode:forwards] md:flex-row md:gap-12">
+          <div className="flex flex-col items-center justify-center gap-6 opacity-0 animate-reveal-up [animation-delay:800ms] [animation-fill-mode:forwards] md:flex-row md:gap-10">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-4 overflow-hidden rounded-full bg-primary px-10 py-5 text-[13px] font-bold uppercase tracking-[0.25em] text-primary-foreground shadow-[0_20px_60px_-15px_oklch(0.82_0.08_85_/_0.55)] transition-all duration-500 hover:shadow-[0_25px_70px_-10px_oklch(0.82_0.08_85_/_0.7)] hover:scale-[1.02] active:scale-[0.98]"
+              className="group relative inline-flex items-center gap-4 overflow-hidden rounded-full bg-primary px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-primary-foreground shadow-[0_15px_40px_-10px_oklch(0.82_0.08_85_/_0.5)] transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]"
             >
               {/* Shimmer */}
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
@@ -412,9 +412,9 @@ function Index() {
                   href="https://www.google.com/maps/dir/?api=1&destination=Rua+Joaquim+Lopes+da+Costa,+819+-+Centro,+Itaitinga+-+CE,+61880000"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full border border-primary/30 bg-primary/5 px-10 py-5 text-[13px] font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_30px_rgba(199,165,100,0.3)]"
+                  className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full border border-primary/30 bg-primary/5 px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_30px_rgba(199,165,100,0.3)]"
                 >
-                  <MapPin size={18} />
+                  <MapPin size={16} />
                   <span>Ver rotas no Google Maps</span>
                 </a>
               </div>
