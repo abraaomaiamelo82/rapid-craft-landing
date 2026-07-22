@@ -361,71 +361,93 @@ function Index() {
       </section>
 
 
-      <section id="localizacao" className="bg-secondary/20 py-24">
-        <div className="mx-auto max-w-7xl px-4">
+      {/* Localização e Horários */}
+      <section id="localizacao" className="py-24 bg-background relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <h2 className="mb-8 font-heading text-4xl font-bold text-white">Onde nos <span className="text-gradient-gold">encontrar</span></h2>
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="rounded-xl bg-primary/10 p-3 text-primary">
+            {/* Bloco de Informações */}
+            <div className="space-y-10 animate-reveal-up">
+              <div>
+                <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.3em] text-primary/80">Onde estamos</p>
+                <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Nossa <span className="text-gradient-gold italic">Localização</span></h2>
+                <div className="mt-4 h-1 w-20 rounded-full bg-primary" />
+              </div>
+
+              <div className="space-y-8">
+                <div className="flex gap-6 group">
+                  <div className="size-14 shrink-0 flex items-center justify-center rounded-2xl bg-white/[0.03] text-primary border border-white/5 transition-all group-hover:border-primary/30 group-hover:bg-primary/5">
                     <MapPin size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white">Endereço</h4>
-                    <p className="text-muted-foreground">Av Dionísio Leonel Alencar, 2317 - 1209 - 61880-000, Ancuri - Itaitinga/CE</p>
+                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50 mb-1">Endereço</h3>
+                    <p className="text-lg text-white font-medium leading-relaxed">
+                      Rua Joaquim Lopes da Costa, 819<br />
+                      Centro, Itaitinga - CE, 61880-000
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="rounded-xl bg-primary/10 p-3 text-primary">
+                <div className="flex gap-6 group">
+                  <div className="size-14 shrink-0 flex items-center justify-center rounded-2xl bg-white/[0.03] text-primary border border-white/5 transition-all group-hover:border-primary/30 group-hover:bg-primary/5">
                     <Clock size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white">Horário de Atendimento</h4>
-                    <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
-                      <li className="flex justify-between border-b border-white/5 pb-1"><span>Segunda a Sábado</span> <span>07:00 - 12:00 e 13:00 - 20:00</span></li>
-                      <li className="flex justify-between pt-1"><span>Domingo</span> <span className="font-bold text-amber-600/80">Fechado</span></li>
+                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50 mb-1">Horário de Funcionamento</h3>
+                    <ul className="text-muted-foreground space-y-1">
+                      <li className="flex justify-between gap-4"><span className="text-white">Segunda - Sexta:</span> <span>08:00 – 19:00</span></li>
+                      <li className="flex justify-between gap-4"><span className="text-white">Sábado:</span> <span>08:00 – 18:00</span></li>
+                      <li className="flex justify-between gap-4 text-primary/60"><span>Domingo:</span> <span>Fechado</span></li>
                     </ul>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                    <CreditCard size={24} />
+                <div className="flex gap-6 group">
+                  <div className="size-14 shrink-0 flex items-center justify-center rounded-2xl bg-white/[0.03] text-primary border border-white/5 transition-all group-hover:border-primary/30 group-hover:bg-primary/5">
+                    <div className="flex flex-col items-center">
+                      <Wallet size={18} className="mb-0.5" />
+                      <CreditCard size={14} />
+                    </div>
                   </div>
                   <div>
-                    <h4 className="font-bold text-white">Formas de Pagamento</h4>
-                    <div className="mt-3 flex gap-4 text-muted-foreground">
-                      <div className="flex flex-col items-center gap-1">
-                        <Wallet size={20} />
-                        <span className="text-[10px] uppercase font-bold">Dinheiro</span>
-                      </div>
-                      <div className="flex flex-col items-center gap-1">
-                        <CreditCard size={20} />
-                        <span className="text-[10px] uppercase font-bold">Crédito</span>
-                      </div>
-                      <div className="flex flex-col items-center gap-1">
-                        <Smartphone size={20} />
-                        <span className="text-[10px] uppercase font-bold">Pix</span>
-                      </div>
+                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50 mb-1">Pagamento</h3>
+                    <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-white">
+                      <span className="flex items-center gap-1.5"><div className="size-1 rounded-full bg-primary" /> Pix</span>
+                      <span className="flex items-center gap-1.5"><div className="size-1 rounded-full bg-primary" /> Crédito</span>
+                      <span className="flex items-center gap-1.5"><div className="size-1 rounded-full bg-primary" /> Débito</span>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <div className="pt-4">
+                <a 
+                  href="https://www.google.com/maps/dir/?api=1&destination=Rua+Joaquim+Lopes+da+Costa,+819+-+Centro,+Itaitinga+-+CE,+61880000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full border border-primary/30 bg-primary/5 px-10 py-5 text-[13px] font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_30px_rgba(199,165,100,0.3)]"
+                >
+                  <MapPin size={18} />
+                  <span>Ver rotas no Google Maps</span>
+                </a>
+              </div>
             </div>
             
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-card p-2 shadow-2xl">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.026405232491!2d-38.51465242502621!3d-3.8398459961340176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74ec81014cc67%3A0xe5a363a0a6713289!2sAv.%20Dion%C3%ADsio%20Leonel%20Alencar%2C%202317%20-%20Ancuri%2C%20Fortaleza%20-%20CE%2C%2060874-212!5e0!3m2!1spt-BR!2sbr!4v1715694852943!5m2!1spt-BR!2sbr" 
-                width="100%" 
-                height="450" 
-                style={{ border: 0 }} 
-                allowFullScreen={true} 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-2xl grayscale contrast-125 brightness-75 sepia-[.20] opacity-70 transition-all hover:opacity-100 hover:sepia-0"
-              />
+            {/* Mapa */}
+            <div className="relative animate-reveal-up [animation-delay:200ms]">
+              <div className="absolute -inset-4 rounded-[2.5rem] bg-primary/5 blur-2xl" />
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-card shadow-2xl transition-all duration-500 hover:border-primary/30">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.791539209736!2d-38.52737602422033!3d-3.9510522441957446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c752669e4f16b7%3A0x6715f07010476495!2sR.%20Joaquim%20Lopes%20da%20Costa%2C%20819%20-%20Centro%2C%20Itaitinga%20-%20CE%2C%2061880-000!5e0!3m2!1spt-BR!2sbr!4v1715697200000!5m2!1spt-BR!2sbr" 
+                  width="100%" 
+                  height="350" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full grayscale contrast-125 brightness-75 sepia-[.10] opacity-80 transition-all duration-700 hover:grayscale-0 hover:brightness-100 hover:sepia-0 hover:opacity-100 min-h-[250px] md:min-h-[350px]"
+                  title="Localização da Sales Barbearia Ancuri"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -552,7 +574,7 @@ function Index() {
                   </div>
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Localização</p>
-                    <p className="text-white">Rua Francisco de Assis de Oliveira, 240, Itaitinga, CE</p>
+                    <p className="text-white">Rua Joaquim Lopes da Costa, 819, Itaitinga, CE</p>
                   </div>
                 </div>
               </div>
