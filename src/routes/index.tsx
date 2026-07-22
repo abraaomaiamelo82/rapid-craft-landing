@@ -269,7 +269,7 @@ function Index() {
                     <h4 className="font-bold text-white">Horário de Atendimento</h4>
                     <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
                       <li className="flex justify-between border-b border-white/5 pb-1"><span>Segunda a Sábado</span> <span>07:00 - 12:00 e 13:00 - 20:00</span></li>
-                      <li className="flex justify-between pt-1"><span>Domingo</span> <span className="font-bold text-red-400">Fechado</span></li>
+                      <li className="flex justify-between pt-1"><span>Domingo</span> <span className="font-bold text-amber-600/80">Fechado</span></li>
                     </ul>
                   </div>
                 </div>
@@ -404,7 +404,7 @@ function Index() {
 
             <div className="lg:col-span-1">
               <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Fale Conosco</h4>
-              <p className="mb-2 text-sm text-gray-400 font-medium">85 98801‑6749</p>
+              <p className="mb-2 text-sm text-muted-foreground font-medium">{formattedPhone}</p>
               <a 
                 href={whatsappUrl} 
                 target="_blank" 
