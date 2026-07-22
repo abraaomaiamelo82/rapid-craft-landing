@@ -23,6 +23,12 @@ import heroAsset from "@/assets/hero-sales-v3.jpeg.asset.json";
 const heroImage = heroAsset.url;
 import logoAsset from "@/assets/sales-logo-v3.jpeg.asset.json";
 const logoImage = logoAsset.url;
+import wl9Asset from "@/assets/wl9.webp.asset.json";
+import wl8Asset from "@/assets/wl8.webp.asset.json";
+const galleryImages = [
+  { src: wl9Asset.url, alt: "Corte degradê com risco de navalha" },
+  { src: wl8Asset.url, alt: "Corte moderno com acabamento preciso" },
+];
 const avatarTiago = "/images/avatar-tiago.jpg";
 const avatarDenise = "/images/avatar-denise.jpg";
 const avatarMarcos = "/images/avatar-marcos.jpg";
