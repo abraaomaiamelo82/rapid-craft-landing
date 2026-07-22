@@ -57,6 +57,13 @@ const testimonials = [
   { name: "Marcos Oliveira", rating: 5, text: "Excelente atendimento e técnica impecável. O degradê ficou perfeito e a barba impecável. Recomendo fortemente.", date: "1 mês atrás", avatar: avatarMarcos, role: "Cliente novo" },
 ];
 
+const clientReviews = [
+  { name: "Rafael Costa", role: "Cliente há 6 meses", date: "2 semanas atrás", text: "Cortei com o Marcos e fiquei impressionado com a atenção aos detalhes. Ambiente super organizado e cheiroso. Já virei cliente fixo!" },
+  { name: "Juliana Mendes", role: "Mãe de cliente", date: "1 mês atrás", text: "Trago meu filho toda semana e ele já pede pra vir sozinho de tão bem que é tratado. Equipe paciente e capricho no acabamento." },
+  { name: "Eduardo Farias", role: "Cliente frequente", date: "4 dias atrás", text: "Melhor barba da região, sem dúvida. Toalha quente, navalha bem afiada e um cheiro de barbearia raiz que eu amo." },
+  { name: "Bruno Teixeira", role: "Cliente novo", date: "3 semanas atrás", text: "Cheguei sem hora marcada e fui super bem atendido. O corte ficou exatamente como eu queria, e olha que sou exigente 😅" },
+];
+
 export const Route = createFileRoute("/")({
   component: Index,
 });
