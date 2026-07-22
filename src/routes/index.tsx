@@ -206,7 +206,6 @@ function Index() {
           </div>
         </div>
       </section>
-      </section>
 
       {/* Amenities Section */}
       <section className="bg-background py-32 border-b border-white/[0.03]">
