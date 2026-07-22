@@ -58,10 +58,34 @@ const testimonials = [
 ];
 
 const clientReviews = [
-  { name: "Rafael Costa", role: "Cliente há 6 meses", date: "2 semanas atrás", text: "Cortei com o Marcos e fiquei impressionado com a atenção aos detalhes. Ambiente super organizado e cheiroso. Já virei cliente fixo!" },
-  { name: "Juliana Mendes", role: "Mãe de cliente", date: "1 mês atrás", text: "Trago meu filho toda semana e ele já pede pra vir sozinho de tão bem que é tratado. Equipe paciente e capricho no acabamento." },
-  { name: "Eduardo Farias", role: "Cliente frequente", date: "4 dias atrás", text: "Melhor barba da região, sem dúvida. Toalha quente, navalha bem afiada e um cheiro de barbearia raiz que eu amo." },
-  { name: "Bruno Teixeira", role: "Cliente novo", date: "3 semanas atrás", text: "Cheguei sem hora marcada e fui super bem atendido. O corte ficou exatamente como eu queria, e olha que sou exigente 😅" },
+  { 
+    name: "Rafael Costa", 
+    role: "Cliente há 6 meses", 
+    date: "2 semanas atrás", 
+    text: "Cortei com o Marcos e fiquei impressionado com a atenção aos detalhes. Ambiente super organizado e cheiroso. Já virei cliente fixo!",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=faces"
+  },
+  { 
+    name: "Juliana Mendes", 
+    role: "Mãe de cliente", 
+    date: "1 mês atrás", 
+    text: "Trago meu filho toda semana e ele já pede pra vir sozinho de tão bem que é tratado. Equipe paciente e capricho no acabamento.",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=faces"
+  },
+  { 
+    name: "Eduardo Farias", 
+    role: "Cliente frequente", 
+    date: "4 dias atrás", 
+    text: "Melhor barba da região, sem dúvida. Toalha quente, navalha bem afiada e um cheiro de barbearia raiz que eu amo.",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=faces"
+  },
+  { 
+    name: "Bruno Teixeira", 
+    role: "Cliente novo", 
+    date: "3 semanas atrás", 
+    text: "Cheguei sem hora marcada e fui super bem atendido. O corte ficou exatamente como eu queria, e olha que sou exigente 😅",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces"
+  },
 ];
 
 export const Route = createFileRoute("/")({
@@ -517,9 +541,11 @@ function Index() {
                 </div>
                 <p className="mb-8 flex-1 italic leading-relaxed text-muted-foreground">"{r.text}"</p>
                 <div className="flex items-center gap-4 border-t border-white/5 pt-6">
-                  <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary/30 to-primary/10 font-heading text-lg font-bold text-primary ring-2 ring-primary/20">
-                    {r.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
-                  </div>
+                  <img 
+                    src={r.avatar} 
+                    alt={r.name}
+                    className="size-12 shrink-0 rounded-full object-cover ring-2 ring-primary/20 shadow-lg"
+                  />
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-bold text-white">{r.name}</p>
                     <p className="text-[11px] uppercase tracking-wider text-primary/80">{r.role}</p>
