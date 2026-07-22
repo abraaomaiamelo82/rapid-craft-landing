@@ -94,4 +94,7 @@
   .glass-card {
     @apply bg-card/30 backdrop-blur-xl border border-white/[0.03] transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)];
   }
+  .text-gradient-gold {
+    @apply bg-gradient-to-br from-primary via-primary/80 to-primary bg-clip-text text-transparent;
+  }
 }
