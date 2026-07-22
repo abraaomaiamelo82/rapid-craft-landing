@@ -25,6 +25,7 @@ import logoAsset from "@/assets/sales-logo-v3.jpeg.asset.json";
 const logoImage = logoAsset.url;
 import wl9Asset from "@/assets/wl9.webp.asset.json";
 import wl8Asset from "@/assets/wl8.webp.asset.json";
+import iiiAsset from "@/assets/iii.jpg.asset.json";
 const galleryImages = [
   { src: wl9Asset.url, alt: "Corte degradê com risco de navalha" },
   { src: wl8Asset.url, alt: "Corte moderno com acabamento preciso" },
