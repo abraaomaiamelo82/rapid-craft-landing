@@ -14,9 +14,11 @@ import {
   Clock,
   CreditCard,
   Wallet,
-  Smartphone
+  Smartphone,
+  Phone,
+  Quote
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import heroAsset from "@/assets/hero-sales-v3.jpeg.asset.json";
 const heroImage = heroAsset.url;
 import logoAsset from "@/assets/sales-logo-v3.jpeg.asset.json";
@@ -65,46 +67,51 @@ function Index() {
   return (
     <div className="flex min-h-screen flex-col bg-background font-sans text-foreground selection:bg-primary selection:text-primary-foreground">
       {/* Header */}
-      <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-background/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
-          <div className="flex items-center gap-3">
+      <header className="fixed top-0 z-50 w-full bg-background/60 backdrop-blur-2xl transition-all duration-500 border-b border-white/[0.03]">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+          <div className="flex items-center gap-4">
             <div className="flex flex-col">
-              <h1 className="font-heading text-xl font-bold tracking-tight text-white md:text-2xl">
-                SALES BARBEARIA <span className="text-primary">ANCURI</span>
+              <h1 className="font-heading text-xl font-bold tracking-tighter text-white md:text-2xl">
+                SALES BARBEARIA <span className="text-gradient-gold">ANCURI</span>
               </h1>
-              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+              <div className="flex items-center gap-1.5 text-[10px] font-medium tracking-widest text-muted-foreground uppercase">
                 <span className="font-bold text-primary">4.9</span>
-                <div className="flex">
+                <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={10} className="fill-primary text-primary" />
+                    <Star key={i} size={8} className="fill-primary text-primary" />
                   ))}
                 </div>
-                <span className="ml-1">(+100 avaliações)</span>
+                <span className="ml-1 opacity-60">(+100 reviews)</span>
               </div>
             </div>
           </div>
 
-          <nav className="hidden items-center gap-8 lg:flex">
-            <a href="#inicio" className="text-sm font-medium transition-colors hover:text-primary">Início</a>
-            <a href="#servicos" className="text-sm font-medium transition-colors hover:text-primary">Serviços</a>
-            <a href="#profissionais" className="text-sm font-medium transition-colors hover:text-primary">Profissionais</a>
-            <a href="#avaliacoes" className="text-sm font-medium transition-colors hover:text-primary">Avaliações</a>
+          <nav className="hidden items-center gap-10 lg:flex">
+            {["inicio", "servicos", "profissionais", "avaliacoes"].map((item) => (
+              <a 
+                key={item}
+                href={`#${item}`} 
+                className="text-[13px] font-bold uppercase tracking-[0.2em] text-muted-foreground transition-all hover:text-primary hover:tracking-[0.25em]"
+              >
+                {item === 'inicio' ? 'Início' : item === 'servicos' ? 'Serviços' : item === 'avaliacoes' ? 'Avaliações' : 'Profissionais'}
+              </a>
+            ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <a 
               href={whatsappUrl} 
               target="_blank" 
-              className="hidden rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:block"
+              className="hidden text-[13px] font-bold uppercase tracking-[0.15em] text-muted-foreground transition-colors hover:text-white sm:block"
             >
-              Meus Agendamentos
+              Meus Horários
             </a>
             <a 
               href={whatsappUrl} 
               target="_blank" 
-              className="rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-transform hover:scale-105"
+              className="rounded-full bg-primary px-8 py-3 text-[13px] font-bold uppercase tracking-[0.15em] text-primary-foreground shadow-2xl shadow-primary/20 transition-all hover:scale-105 hover:shadow-primary/40 active:scale-95"
             >
-              Agendar agora
+              Agendar
             </a>
           </div>
         </div>
@@ -149,30 +156,24 @@ function Index() {
       </section>
 
       {/* Amenities Section */}
-      <section className="border-y border-white/5 bg-secondary/30 py-8 sm:py-12">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 md:flex md:flex-wrap md:items-center md:justify-center md:gap-16">
-            {amenities.map((item) => (
-              <div
-                key={item.label}
-                className="relative cursor-pointer transition-all duration-300 hover:scale-105 md:hover:scale-110 group/amenity"
-                onMouseEnter={() => setActiveTooltip(item.label)}
-                onMouseLeave={() => setActiveTooltip(null)}
-                onClick={() => setActiveTooltip(activeTooltip === item.label ? null : item.label)}
+      <section className="bg-background py-32 border-b border-white/[0.03]">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            {amenities.map((item, idx) => (
+              <div 
+                key={item.label} 
+                className="group flex flex-col items-center justify-center space-y-5 rounded-[2.5rem] border border-white/[0.03] bg-white/[0.01] p-12 text-center transition-all duration-700 hover:bg-white/[0.03] hover:border-primary/20 hover:-translate-y-2"
+                style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <div className="flex flex-col items-center gap-2 text-center">
-                  <div className="rounded-2xl bg-secondary p-3 sm:p-4 text-primary backdrop-blur-sm transition-all duration-300 group-hover/amenity:bg-primary/20 group-hover/amenity:shadow-[0_0_25px_rgba(199,165,100,0.2)] border border-white/5">
-                    <item.icon className="size-6 sm:size-7" />
-                  </div>
-                  <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">{item.label}</span>
+                <div className="mb-2 text-primary transition-all duration-500 group-hover:scale-125 group-hover:rotate-6 group-hover:drop-shadow-[0_0_15px_rgba(199,165,100,0.4)]">
+                  <item.icon size={32} strokeWidth={1.5} />
                 </div>
-                {activeTooltip === item.label && (
-                  <div className="absolute bottom-full left-1/2 mb-4 w-44 sm:w-48 -translate-x-1/2 rounded-lg bg-card p-3 text-center text-xs shadow-xl border border-white/10 animate-in fade-in slide-in-from-bottom-2 z-10">
-                    <p className="font-bold text-primary mb-1">{item.label}</p>
-                    <p className="text-muted-foreground">{item.description}</p>
-                    <div className="absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rotate-45 bg-card border-r border-b border-white/10" />
-                  </div>
-                )}
+                <div className="space-y-1">
+                  <p className="font-heading text-xl font-bold text-white tracking-tight">{item.label}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground opacity-50 transition-opacity group-hover:opacity-100">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -205,37 +206,38 @@ function Index() {
             <p className="mt-6 max-w-md text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <div key={service.name} className="group glass-card overflow-hidden rounded-3xl backdrop-blur-sm animate-reveal-up" style={{ animationDelay: `${services.indexOf(service) * 100}ms` }}>
-                <div className="relative h-48 w-full overflow-hidden">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, index) => (
+              <div 
+                key={service.name} 
+                className="group glass-card overflow-hidden rounded-[2rem] backdrop-blur-sm animate-reveal-up" 
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <div className="relative h-64 w-full overflow-hidden">
                   <img 
                     src={service.image} 
                     alt={service.name} 
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="h-full w-full object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:rotate-1"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
-                </div>
-                <div className="p-8">
-                  <div className="mb-6 flex items-start justify-between">
-                    <div className="rounded-2xl bg-primary/20 p-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                      <Scissors size={24} />
-                    </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-bold text-primary">{service.price}</p>
-                      <p className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
-                        <Clock size={12} /> {service.duration}
-                      </p>
-                    </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                  <div className="absolute bottom-6 left-8">
+                    <span className="rounded-full bg-primary/20 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary backdrop-blur-md">
+                      {service.duration}
+                    </span>
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-white">{service.name}</h3>
-                  <p className="mb-8 text-sm text-muted-foreground">{service.description}</p>
+                </div>
+                <div className="p-10">
+                  <div className="mb-8 flex items-center justify-between">
+                    <h3 className="font-heading text-2xl font-bold text-white">{service.name}</h3>
+                    <p className="text-2xl font-bold text-primary tracking-tighter">{service.price}</p>
+                  </div>
+                  <p className="mb-10 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
                   <a 
                     href={whatsappUrl} 
                     target="_blank" 
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 py-3 text-sm font-bold text-white transition-all hover:bg-primary hover:text-primary-foreground"
+                    className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] py-5 text-[13px] font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-primary hover:text-primary-foreground hover:border-transparent active:scale-95"
                   >
-                    Agendar este serviço
+                    Reservar agora
                   </a>
                 </div>
               </div>
@@ -365,61 +367,66 @@ function Index() {
       </a>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 bg-background py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid gap-12 lg:grid-cols-4">
-            <div className="lg:col-span-1">
-              <h2 className="font-heading text-2xl font-bold text-white mb-4">
-                SALES BARBEARIA <span className="text-primary">ANCURI</span>
+      <footer className="relative bg-background pt-32 pb-20 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-20 lg:grid-cols-2">
+            <div>
+              <h2 className="font-heading text-5xl font-bold text-white mb-8">
+                Pronto para uma nova <span className="italic text-gradient-gold">perspectiva</span>?
               </h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Elevando o padrão de barbearia no Ancuri. Cortes modernos, ambiente sofisticado e tradição em cada detalhe.
+              <p className="text-muted-foreground text-lg mb-12 max-w-md leading-relaxed">
+                Junte-se à nossa comunidade de clientes que valorizam a estética e o bem-estar. O seu próximo grande corte começa aqui.
               </p>
-              <div className="mt-8 flex gap-4">
-                <a href="#" className="rounded-full bg-white/5 p-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"><Instagram size={20} /></a>
-                <a href="#" className="rounded-full bg-white/5 p-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"><Facebook size={20} /></a>
-                <a href={whatsappUrl} className="rounded-full bg-white/5 p-3 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"><MessageSquare size={20} /></a>
+              
+              <div className="space-y-6">
+                <div className="flex items-center gap-6">
+                  <div className="size-14 flex items-center justify-center rounded-2xl bg-white/[0.03] text-primary">
+                    <Phone size={24} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Contato Direto</p>
+                    <p className="text-xl font-bold text-white">{formattedPhone}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="size-14 flex items-center justify-center rounded-2xl bg-white/[0.03] text-primary">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Localização</p>
+                    <p className="text-white">Rua Francisco de Assis de Oliveira, 240, Itaitinga, CE</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 lg:col-span-2">
-              <div>
-                <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Acesso Rápido</h4>
-                <ul className="space-y-4 text-sm text-muted-foreground">
-                  <li><a href="#inicio" className="transition-colors hover:text-primary">Início</a></li>
-                  <li><a href="#servicos" className="transition-colors hover:text-primary">Serviços</a></li>
-                  <li><a href="#avaliacoes" className="transition-colors hover:text-primary">Avaliações</a></li>
-                  <li><a href={whatsappUrl} className="transition-colors hover:text-primary">Agendar Horário</a></li>
-                </ul>
+            <div className="flex flex-col justify-end lg:items-end">
+              <div className="mb-10 text-left lg:text-right">
+                <p className="text-muted-foreground mb-4 opacity-40 font-medium">Fale conosco agora</p>
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank" 
+                  className="group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full bg-primary px-16 py-7 text-[15px] font-bold uppercase tracking-[0.2em] text-primary-foreground shadow-[0_20px_40px_rgba(199,165,100,0.3)] transition-all hover:scale-105 active:scale-95"
+                >
+                  <div className="absolute inset-0 bg-white/20 transition-transform duration-500 -translate-x-full group-hover:translate-x-0" />
+                  <MessageSquare size={20} className="relative z-10" />
+                  <span className="relative z-10">Agendar via WhatsApp</span>
+                </a>
               </div>
-              <div>
-                <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Informações</h4>
-                <ul className="space-y-4 text-sm text-muted-foreground">
-                  <li><a href="#localizacao" className="transition-colors hover:text-primary">Localização</a></li>
-                  <li><a href="#" className="transition-colors hover:text-primary">Favoritos</a></li>
-                  <li><a href="#" className="transition-colors hover:text-primary">Meus Agendamentos</a></li>
-                </ul>
+              <div className="flex gap-8">
+                {["Instagram", "Facebook", "Google Reviews"].map((social) => (
+                  <a key={social} href="#" className="text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-primary">{social}</a>
+                ))}
               </div>
-            </div>
-
-            <div className="lg:col-span-1">
-              <h4 className="mb-6 font-bold uppercase tracking-widest text-white text-xs">Fale Conosco</h4>
-              <p className="mb-2 text-sm text-muted-foreground font-medium">{formattedPhone}</p>
-              <a 
-                href={whatsappUrl} 
-                target="_blank" 
-                className="inline-block rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-transform hover:scale-105"
-              >
-                Chamar no WhatsApp
-              </a>
             </div>
           </div>
           
-          <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-xs text-muted-foreground md:flex-row">
-            <p>© {new Date().getFullYear()} Sales Barbearia Ancuri. Todos os direitos reservados.</p>
-            <div className="flex gap-8">
-              <a href="#" className="hover:text-primary">Termos de Uso</a>
-              <a href="#" className="hover:text-primary">Privacidade</a>
+          <div className="mt-32 pt-10 border-t border-white/[0.03] flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40">© {new Date().getFullYear()} Sales Barbearia Ancuri. Todos os direitos reservados.</p>
+            <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40">
+              <a href="#" className="hover:text-primary transition-colors">Privacidade</a>
+              <a href="#" className="hover:text-primary transition-colors">Termos</a>
             </div>
           </div>
         </div>

@@ -1,27 +1,31 @@
 :root {
-  /* Premium Obsidian & Gold Palette */
-  --background: oklch(0.06 0.01 45);
-  --foreground: oklch(0.95 0.01 45);
+  /* Ultra-Premium Obsidian & Champagne Gold Palette */
+  --background: oklch(0.05 0.01 45); /* Deepest Obsidian */
+  --foreground: oklch(0.98 0.005 45); /* Soft Pearl White */
   
-  /* Primary Gold - Refined Champagne */
-  --primary: oklch(0.78 0.12 85);
-  --primary-foreground: oklch(0.1 0.02 45);
+  /* Refined Champagne Gold - Less saturated, more elegant */
+  --primary: oklch(0.82 0.08 85); 
+  --primary-foreground: oklch(0.12 0.02 45);
   
-  /* Surfaces - Layered Dark */
-  --secondary: oklch(0.12 0.02 45);
-  --secondary-foreground: oklch(0.9 0.01 45);
+  /* Layered Depth Surfaces */
+  --secondary: oklch(0.1 0.015 45);
+  --secondary-foreground: oklch(0.92 0.01 45);
   
-  --card: oklch(0.1 0.015 45);
-  --card-foreground: oklch(0.9 0.01 45);
+  --card: oklch(0.08 0.01 45);
+  --card-foreground: oklch(0.95 0.005 45);
   
-  --muted: oklch(0.18 0.01 45);
-  --muted-foreground: oklch(0.65 0.02 45);
+  --muted: oklch(0.15 0.01 45);
+  --muted-foreground: oklch(0.55 0.015 45);
   
-  --accent: oklch(0.25 0.03 45);
-  --accent-foreground: oklch(0.95 0.01 45);
+  --accent: oklch(0.2 0.02 45);
+  --accent-foreground: oklch(0.98 0.005 45);
   
-  --border: oklch(0.16 0.01 45);
-  --ring: oklch(0.78 0.12 85);
+  --border: oklch(0.14 0.01 45);
+  --ring: oklch(0.82 0.08 85);
+
+  --radius-lg: 1.5rem;
+  --radius-md: 1rem;
+  --radius-sm: 0.5rem;
 }
 
 @import "tailwindcss" source(none);
@@ -47,18 +51,20 @@
   --color-muted-foreground: var(--muted-foreground);
 
   --animate-float: float 6s ease-in-out infinite;
-  --animate-reveal-up: reveal-up 0.8s cubic-bezier(0.21, 1.02, 0.47, 0.98) forwards;
-  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-reveal-up: reveal-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-glow: glow 3s ease-in-out infinite alternate;
+  --animate-fade-in: fade-in 0.8s ease-out forwards;
+  --animate-scale-in: scale-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-15px); }
   }
 
   @keyframes reveal-up {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px);
     }
     to {
       opacity: 1;
@@ -67,8 +73,18 @@
   }
 
   @keyframes glow {
-    from { box-shadow: 0 0 5px oklch(0.78 0.12 85 / 0.15); }
-    to { box-shadow: 0 0 25px oklch(0.78 0.12 85 / 0.35); }
+    from { box-shadow: 0 0 10px oklch(0.82 0.08 85 / 0.1); }
+    to { box-shadow: 0 0 30px oklch(0.82 0.08 85 / 0.25); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scale-in {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
   }
 }
 
@@ -81,6 +97,10 @@
     color: var(--foreground);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+  }
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
   }
 }
 
@@ -89,12 +109,15 @@
     text-wrap: balance;
   }
   .glass {
-    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05];
+    @apply bg-white/[0.015] backdrop-blur-2xl border border-white/[0.04];
   }
   .glass-card {
-    @apply bg-card/30 backdrop-blur-xl border border-white/[0.03] transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)];
+    @apply bg-card/40 backdrop-blur-xl border border-white/[0.03] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-primary/40 hover:bg-card/60 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] hover:-translate-y-2;
   }
   .text-gradient-gold {
-    @apply bg-gradient-to-br from-primary via-primary/80 to-primary bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent;
+  }
+  .gold-glow {
+    @apply shadow-[0_0_20px_oklch(0.82_0.08_85_/_0.15)];
   }
 }
