@@ -154,30 +154,24 @@ function Index() {
       </section>
 
       {/* Amenities Section */}
-      <section className="border-y border-white/5 bg-secondary/30 py-8 sm:py-12">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 md:flex md:flex-wrap md:items-center md:justify-center md:gap-16">
-            {amenities.map((item) => (
-              <div
-                key={item.label}
-                className="relative cursor-pointer transition-all duration-300 hover:scale-105 md:hover:scale-110 group/amenity"
-                onMouseEnter={() => setActiveTooltip(item.label)}
-                onMouseLeave={() => setActiveTooltip(null)}
-                onClick={() => setActiveTooltip(activeTooltip === item.label ? null : item.label)}
+      <section className="bg-background py-32 border-b border-white/[0.03]">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            {amenities.map((item, idx) => (
+              <div 
+                key={item.label} 
+                className="group flex flex-col items-center justify-center space-y-5 rounded-[2.5rem] border border-white/[0.03] bg-white/[0.01] p-12 text-center transition-all duration-700 hover:bg-white/[0.03] hover:border-primary/20 hover:-translate-y-2"
+                style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <div className="flex flex-col items-center gap-2 text-center">
-                  <div className="rounded-2xl bg-secondary p-3 sm:p-4 text-primary backdrop-blur-sm transition-all duration-300 group-hover/amenity:bg-primary/20 group-hover/amenity:shadow-[0_0_25px_rgba(199,165,100,0.2)] border border-white/5">
-                    <item.icon className="size-6 sm:size-7" />
-                  </div>
-                  <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">{item.label}</span>
+                <div className="mb-2 text-primary transition-all duration-500 group-hover:scale-125 group-hover:rotate-6 group-hover:drop-shadow-[0_0_15px_rgba(199,165,100,0.4)]">
+                  <item.icon size={32} strokeWidth={1.5} />
                 </div>
-                {activeTooltip === item.label && (
-                  <div className="absolute bottom-full left-1/2 mb-4 w-44 sm:w-48 -translate-x-1/2 rounded-lg bg-card p-3 text-center text-xs shadow-xl border border-white/10 animate-in fade-in slide-in-from-bottom-2 z-10">
-                    <p className="font-bold text-primary mb-1">{item.label}</p>
-                    <p className="text-muted-foreground">{item.description}</p>
-                    <div className="absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rotate-45 bg-card border-r border-b border-white/10" />
-                  </div>
-                )}
+                <div className="space-y-1">
+                  <p className="font-heading text-xl font-bold text-white tracking-tight">{item.label}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground opacity-50 transition-opacity group-hover:opacity-100">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
