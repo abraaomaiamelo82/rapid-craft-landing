@@ -161,7 +161,7 @@ function Index() {
                 onClick={() => setActiveTooltip(activeTooltip === item.label ? null : item.label)}
               >
                 <div className="flex flex-col items-center gap-2 text-center">
-                  <div className="rounded-2xl bg-white/5 p-3 sm:p-4 text-primary backdrop-blur-sm transition-all duration-300 group-hover/amenity:bg-primary/20 group-hover/amenity:shadow-[0_0_20px_rgba(184,146,64,0.3)]">
+                  <div className="rounded-2xl bg-secondary p-3 sm:p-4 text-primary backdrop-blur-sm transition-all duration-300 group-hover/amenity:bg-primary/20 group-hover/amenity:shadow-[0_0_25px_rgba(199,165,100,0.2)] border border-white/5">
                     <item.icon className="size-6 sm:size-7" />
                   </div>
                   <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">{item.label}</span>
@@ -308,7 +308,7 @@ function Index() {
                 allowFullScreen={true} 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-2xl grayscale contrast-125 opacity-80"
+                className="rounded-2xl grayscale contrast-125 brightness-75 sepia-[.20] opacity-70 transition-all hover:opacity-100 hover:sepia-0"
               />
             </div>
           </div>
