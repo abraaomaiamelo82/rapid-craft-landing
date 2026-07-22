@@ -574,7 +574,7 @@ function Index() {
                   </div>
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Localização</p>
-                    <p className="text-white">Rua Francisco de Assis de Oliveira, 240, Itaitinga, CE</p>
+                    <p className="text-white">Rua Joaquim Lopes da Costa, 819, Itaitinga, CE</p>
                   </div>
                 </div>
               </div>
