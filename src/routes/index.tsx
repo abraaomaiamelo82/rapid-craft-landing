@@ -25,6 +25,7 @@ import logoAsset from "@/assets/sales-logo-v3.jpeg.asset.json";
 const logoImage = logoAsset.url;
 import wl9Asset from "@/assets/wl9.webp.asset.json";
 import wl8Asset from "@/assets/wl8.webp.asset.json";
+import iiiAsset from "@/assets/iii.jpg.asset.json";
 const galleryImages = [
   { src: wl9Asset.url, alt: "Corte degradê com risco de navalha" },
   { src: wl8Asset.url, alt: "Corte moderno com acabamento preciso" },
@@ -209,6 +210,21 @@ function Index() {
             <div className="relative h-12 w-[1px] overflow-hidden bg-white/[0.06]">
               <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-primary to-transparent animate-[scrollLine_2s_ease-in-out_infinite]" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Signature Logo Section */}
+      <section className="relative overflow-hidden bg-background py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="group relative overflow-hidden rounded-[2.5rem] border border-white/[0.03] bg-white/[0.01] p-4 transition-all duration-700 hover:border-primary/20">
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+            <img 
+              src={iiiAsset.url} 
+              alt="Sales Barbearia Signature" 
+              className="aspect-[21/9] w-full rounded-[2rem] object-cover object-center transition-transform duration-[2s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/[0.05]" />
           </div>
         </div>
       </section>
