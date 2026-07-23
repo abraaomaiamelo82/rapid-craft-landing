@@ -302,17 +302,17 @@ function Index() {
             <p className="mt-4 max-w-md text-sm text-muted-foreground">Técnicas modernas aliadas à precisão clássica.</p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-4 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
             {services.map((service, index) => (
-              <div 
-                key={service.name} 
-                className="group glass-card overflow-hidden rounded-2xl backdrop-blur-sm animate-reveal-up" 
+              <div
+                key={service.name}
+                className="group glass-card shrink-0 basis-[85%] snap-center overflow-hidden rounded-2xl backdrop-blur-sm animate-reveal-up transition-transform duration-500 ease-out active:scale-[0.97] sm:basis-auto"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="relative h-48 w-full overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={service.name} 
+                  <img
+                    src={service.image}
+                    alt={service.name}
                     className="h-full w-full object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
@@ -328,9 +328,9 @@ function Index() {
                     <p className="text-xl font-bold text-primary tracking-tighter">{service.price}</p>
                   </div>
                   <p className="mb-6 text-xs leading-relaxed text-muted-foreground">{service.description}</p>
-                  <a 
-                    href={whatsappUrl} 
-                    target="_blank" 
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
                     className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/[0.03] py-3.5 text-[12px] font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-primary hover:text-primary-foreground hover:border-transparent active:scale-95"
                   >
                     Reservar agora
@@ -339,6 +339,13 @@ function Index() {
               </div>
             ))}
           </div>
+          <div className="mt-4 flex justify-center gap-1.5 sm:hidden" aria-hidden>
+            {services.map((s, i) => (
+              <span key={s.name} className="h-1 w-6 rounded-full bg-white/15" style={{ animationDelay: `${i * 100}ms` }} />
+            ))}
+          </div>
+          <p className="mt-3 text-center text-[10px] uppercase tracking-[0.3em] text-white/40 sm:hidden">Deslize para ver mais →</p>
+
         </div>
       </section>
 
